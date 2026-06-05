@@ -1,0 +1,354 @@
+/* ── SECTION ────────────────────────────────────────── */
+.testi {
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── BACKGROUND ORBS ────────────────────────────────── */
+.testi-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.testi-orb-a {
+  position: absolute;
+  top: -120px;
+  right: 10%;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(100px);
+  transition: background 1s var(--ease);
+}
+
+.testi-orb-b {
+  position: absolute;
+  bottom: -80px;
+  left: 5%;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  filter: blur(80px);
+}
+
+/* ── LAYOUT ─────────────────────────────────────────── */
+.testi .container { position: relative; z-index: 1; }
+
+.testi-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── SIDEBAR ────────────────────────────────────────── */
+.testi-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.testi-tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.25s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.testi-tab::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  border-radius: 0 2px 2px 0;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+.testi-tab:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+  transform: translateX(4px);
+}
+
+.testi-tab.active {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.testi-tab.active::before { opacity: 1; }
+
+.ttab-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.ttab-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ttab-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ttab-company {
+  font-size: 0.72rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ttab-cert {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+
+/* ── MAIN GLASS CARD ────────────────────────────────── */
+.testi-card {
+  position: relative;
+  border-radius: 24px;
+  padding: 52px 56px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  overflow: hidden;
+  transition: opacity 0.28s var(--ease), transform 0.28s var(--ease);
+}
+
+.testi-card.exit {
+  opacity: 0;
+  transform: translateY(16px) scale(0.98);
+}
+
+.testi-card.enter {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.testi-card-glow {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  opacity: 0.12;
+  filter: blur(60px);
+  transition: background 1s var(--ease);
+  pointer-events: none;
+}
+
+/* ── CARD TOP ROW ───────────────────────────────────── */
+.testi-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.testi-cert-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid;
+  transition: color 0.6s var(--ease), border-color 0.6s var(--ease);
+}
+
+.testi-stars {
+  color: #F59E0B;
+  font-size: 1rem;
+  letter-spacing: 3px;
+}
+
+/* ── QUOTE ──────────────────────────────────────────── */
+.testi-quote {
+  position: relative;
+  font-size: 1.2rem;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.82);
+  font-style: italic;
+  margin-bottom: 44px;
+  padding-left: 28px;
+  border: none;
+}
+
+.testi-quotemark {
+  position: absolute;
+  left: 0;
+  top: -8px;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--cherry-bright);
+  opacity: 0.5;
+  font-style: normal;
+  pointer-events: none;
+}
+
+/* ── AUTHOR ─────────────────────────────────────────── */
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+.testi-avatar {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  transition: background 0.6s var(--ease);
+}
+
+.testi-avatar-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid;
+  opacity: 0.4;
+  transition: border-color 0.6s var(--ease);
+}
+
+.testi-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.testi-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.testi-role {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.testi-country {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 0.3px;
+}
+
+/* ── PROGRESS DOTS ──────────────────────────────────── */
+.testi-progress {
+  display: flex;
+  gap: 8px;
+}
+
+.testi-dot {
+  height: 4px;
+  width: 24px;
+  border-radius: 2px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.4s var(--ease), width 0.4s var(--ease-out);
+}
+
+.testi-dot.active {
+  width: 48px;
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .testi-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .testi-sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .testi-tab {
+    flex: 1;
+    min-width: 140px;
+    padding: 10px 12px;
+  }
+
+  .testi-tab:hover { transform: none; }
+  .testi-tab::before { display: none; }
+  .ttab-cert { display: none; }
+}
+
+@media (max-width: 600px) {
+  .testi-card {
+    padding: 32px 28px;
+  }
+
+  .testi-quote {
+    font-size: 1rem;
+    padding-left: 20px;
+  }
+
+  .testi-sidebar { gap: 6px; }
+
+  .testi-tab {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px 8px;
+    min-width: 80px;
+  }
+
+  .ttab-body { align-items: center; }
+  .ttab-name { font-size: 0.7rem; }
+  .ttab-company { display: none; }
+}
