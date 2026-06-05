@@ -3,19 +3,21 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --cherry:     #7A1F3D;
-  --cherry-mid: #9B2548;
-  --cherry-lt:  #C4395F;
-  --ink:        #1A1A1A;
-  --ink-mid:    #2C2C2C;
-  --ink-soft:   #4A4A4A;
-  --ink-muted:  #6B6B6B;
-  --ink-faint:  #9B9B9B;
-  --rule:       rgba(0,0,0,0.08);
-  --rule-md:    rgba(0,0,0,0.13);
-  --white:      #ffffff;
-  --off:        #F8F8F8;
-  --paper:      #F3F3F3;
+  --cherry:      #7A1F3D;
+  --cherry-mid:  #9B2548;
+  --cherry-lt:   #C4395F;
+  --cherry-pale: #F9EEF1;
+  --cherry-glow: rgba(122,31,61,0.12);
+  --ink:         #1A1A1A;
+  --ink-mid:     #2C2C2C;
+  --ink-soft:    #4A4A4A;
+  --ink-muted:   #6B6B6B;
+  --ink-faint:   #9B9B9B;
+  --rule:        rgba(0,0,0,0.07);
+  --rule-md:     rgba(0,0,0,0.11);
+  --white:       #ffffff;
+  --off:         #F8F8F8;
+  --paper:       #F3F3F3;
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body:    'Inter', system-ui, sans-serif;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -38,59 +40,54 @@ ul { list-style: none; }
 img { max-width: 100%; display: block; }
 
 .container {
-  max-width: 1320px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 72px;
 }
 
-/* ── SECTION SPACING ──────────────────────────────────── */
-.section-pad { padding: 128px 0; }
+.section-pad { padding: 120px 0; }
 
-/* ── REVEAL ANIMATIONS ────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
+  transform: translateY(18px);
+  transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out);
 }
 .reveal.in { opacity: 1; transform: none; }
-
-.fade-left  { opacity: 0; transform: translateX(-28px); transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out); }
-.fade-right { opacity: 0; transform: translateX(28px);  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out); }
+.fade-left  { opacity: 0; transform: translateX(-22px); transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out); }
+.fade-right { opacity: 0; transform: translateX(22px);  transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out); }
 .fade-left.in, .fade-right.in { opacity: 1; transform: none; }
 
 .d1 { transition-delay: 0.05s; }
-.d2 { transition-delay: 0.12s; }
-.d3 { transition-delay: 0.19s; }
-.d4 { transition-delay: 0.26s; }
-.d5 { transition-delay: 0.33s; }
+.d2 { transition-delay: 0.10s; }
+.d3 { transition-delay: 0.15s; }
+.d4 { transition-delay: 0.20s; }
+.d5 { transition-delay: 0.25s; }
 
-/* ── EYEBROW ──────────────────────────────────────────── */
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 3.5px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--cherry);
   margin-bottom: 18px;
 }
 .eyebrow::before {
   content: '';
-  width: 28px; height: 1px;
+  width: 24px; height: 1px;
   background: var(--cherry);
   flex-shrink: 0;
 }
 
-/* ── SECTION TITLE ────────────────────────────────────── */
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
   font-weight: 800;
   color: var(--ink);
   line-height: 1.1;
-  letter-spacing: -1px;
+  letter-spacing: -1.2px;
   margin-bottom: 20px;
 }
 .section-title em { font-style: italic; color: var(--cherry); }
@@ -98,10 +95,10 @@ img { max-width: 100%; display: block; }
 .section-lead {
   font-size: 1.05rem;
   color: var(--ink-muted);
-  line-height: 1.8;
+  line-height: 1.85;
   max-width: 520px;
 }
 
-@media (max-width: 1024px) { .container { padding: 0 48px; } }
-@media (max-width: 768px)  { .container { padding: 0 24px; } .section-pad { padding: 88px 0; } }
-@media (max-width: 480px)  { .section-pad { padding: 64px 0; } }
+@media (max-width: 1024px) { .container { padding: 0 40px; } }
+@media (max-width: 768px)  { .container { padding: 0 24px; } .section-pad { padding: 80px 0; } }
+@media (max-width: 480px)  { .section-pad { padding: 60px 0; } }

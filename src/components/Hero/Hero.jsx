@@ -2,13 +2,13 @@ import { useEffect, useRef } from 'react'
 import './Hero.css'
 
 const stats = [
-  { n: '20+', l: 'Years Active' },
-  { n: '6,000+', l: 'Enterprises Certified' },
-  { n: '98%', l: 'First-Pass Rate' },
-  { n: '40+', l: 'Countries' },
+  { n: '20+',    l: 'Years Active' },
+  { n: '6,000+', l: 'Enterprises' },
+  { n: '98%',    l: 'First-Pass Rate' },
+  { n: '40+',    l: 'Countries' },
 ]
 
-const trustBar = [
+const trustBadges = [
   'ISO Certification',
   'Compliance Audits',
   'Product Certification',
@@ -20,34 +20,38 @@ export default function Hero() {
   const ref = useRef(null)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const t = setTimeout(() => {
       ref.current?.querySelectorAll('.reveal').forEach(el => el.classList.add('in'))
-    }, 80)
-    return () => clearTimeout(timer)
+    }, 60)
+    return () => clearTimeout(t)
   }, [])
 
   return (
     <section className="hero" id="home" ref={ref}>
+      {/* background wash */}
+      <div className="hero-wash" aria-hidden="true" />
+
       <div className="hero-inner container">
 
-        {/* Left — text content */}
+        {/* ── LEFT ── */}
         <div className="hero-content">
-          <div className="hero-badge reveal d1">
-            <span className="badge-dot" />
+          <div className="h-kicker reveal d1">
+            <span className="kicker-dot" />
             Global ISO &amp; Compliance Authority · Est. 2004
           </div>
 
-          <h1 className="hero-headline reveal d2">
+          <h1 className="h-headline reveal d2">
             Precision<br />
             <em>Compliance</em><br />
-            Authority.
+            <span className="hl-plain">Authority.</span>
           </h1>
 
-          <p className="hero-lead reveal d3">
-            ExQual elevates enterprises to world-class standards — delivering ISO certifications and compliance frameworks that command global respect.
+          <p className="h-descriptor reveal d3">
+            ExQual elevates enterprises to world-class standards — delivering ISO certifications
+            and compliance frameworks that command global respect.
           </p>
 
-          <div className="hero-actions reveal d4">
+          <div className="h-actions reveal d4">
             <a href="#contact" className="h-btn-primary">
               Begin Engagement
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -57,7 +61,7 @@ export default function Hero() {
             <a href="#services" className="h-btn-ghost">Explore Services</a>
           </div>
 
-          <div className="hero-stats reveal d5">
+          <div className="h-stats reveal d5">
             {stats.map(({ n, l }) => (
               <div className="hstat" key={l}>
                 <span className="hstat-num">{n}</span>
@@ -67,32 +71,39 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right — image */}
-        <div className="hero-visual reveal d3">
-          <div className="hero-img-glow" aria-hidden="true" />
-          <div className="hero-img-container">
+        {/* ── RIGHT ── */}
+        <div className="hero-visual reveal d2">
+          <div className="hero-glow" aria-hidden="true" />
+          <div className="hero-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=90&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&q=90&auto=format&fit=crop"
               alt="Enterprise compliance professionals"
               className="hero-img"
+              loading="eager"
             />
-            <div className="hero-img-badge">
-              <span className="hib-num">98%</span>
-              <span className="hib-text">First-Pass<br />Certification Rate</span>
+            <div className="hero-float-card">
+              <div className="hfc-icon">✓</div>
+              <div>
+                <span className="hfc-num">98%</span>
+                <span className="hfc-text">First-Pass<br />Certification Rate</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Trust bar */}
+      {/* ── TRUST BAR ── */}
       <div className="trust-bar">
         <div className="container trust-bar-inner">
           <span className="trust-bar-label">Our Services</span>
+          <div className="trust-bar-divider" />
           <div className="trust-bar-items">
-            {trustBar.map((item, i) => (
-              <span className="trust-item" key={i}>
-                <span className="trust-dot" />
-                {item}
+            {trustBadges.map(b => (
+              <span className="trust-item" key={b}>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                {b}
               </span>
             ))}
           </div>
