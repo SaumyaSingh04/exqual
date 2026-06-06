@@ -1,19 +1,47 @@
 import { useEffect, useRef } from 'react'
-import {
-  FiActivity, FiCpu, FiTruck, FiHome,
-  FiShoppingBag, FiDroplet, FiZap, FiPackage
-} from 'react-icons/fi'
 import './Industries.css'
 
 const industries = [
-  { icon: FiActivity, name: 'Healthcare & Medical', count: '420+ certified' },
-  { icon: FiCpu, name: 'Information Technology', count: '810+ certified' },
-  { icon: FiTruck, name: 'Manufacturing & Logistics', count: '1,200+ certified' },
-  { icon: FiHome, name: 'Construction & Real Estate', count: '560+ certified' },
-  { icon: FiShoppingBag, name: 'Retail & Consumer Goods', count: '390+ certified' },
-  { icon: FiDroplet, name: 'Oil, Gas & Energy', count: '280+ certified' },
-  { icon: FiZap, name: 'Aerospace & Defence', count: '190+ certified' },
-  { icon: FiPackage, name: 'Food & Beverage', count: '640+ certified' },
+  {
+    name: 'Healthcare & Medical',
+    count: '420+ certified',
+    img: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80&auto=format&fit=crop',
+  },
+  {
+    name: 'Information Technology',
+    count: '810+ certified',
+    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80&auto=format&fit=crop',
+  },
+  {
+    name: 'Manufacturing & Logistics',
+    count: '1,200+ certified',
+    img: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80&auto=format&fit=crop',
+  },
+  {
+    name: 'Construction & Real Estate',
+    count: '560+ certified',
+    img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80&auto=format&fit=crop',
+  },
+  {
+    name: 'Retail & Consumer Goods',
+    count: '390+ certified',
+    img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80&auto=format&fit=crop',
+  },
+  {
+    name: 'Oil, Gas & Energy',
+    count: '280+ certified',
+    img: 'https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?w=600&q=80&auto=format&fit=crop',
+  },
+  {
+    name: 'Aerospace & Defence',
+    count: '190+ certified',
+    img: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80&auto=format&fit=crop',
+  },
+  {
+    name: 'Food & Beverage',
+    count: '640+ certified',
+    img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80&auto=format&fit=crop',
+  },
 ]
 
 export default function Industries() {
@@ -30,34 +58,31 @@ export default function Industries() {
 
   return (
     <section className="industries section-pad" id="industries" ref={ref}>
-      <div className="ind-bg" aria-hidden="true">
-        <div className="ind-orb-a" />
-        <div className="ind-orb-b" />
-        <div className="ind-grid-lines" />
-      </div>
       <div className="container">
-        <div className="section-header reveal">
+        <div className="ind-header reveal">
           <span className="eyebrow">Who We Serve</span>
           <h2 className="section-title">
             Sector Expertise at<br />
-            <em className="title-em">Enterprise Depth.</em>
+            <em>Enterprise Depth.</em>
           </h2>
           <p className="section-lead">
             Compliance architecture tailored to the regulatory complexities of eight critical global industries.
           </p>
         </div>
 
-        <div className="ind-marquee-wrapper">
-          <div className="ind-row ind-row-top">
-            {[...industries.slice(0, 4), ...industries.slice(0, 4)].map((ind, i) => (
-              <IndustryCard key={i} {...ind} />
-            ))}
-          </div>
-          <div className="ind-row ind-row-btm">
-            {[...industries.slice(4), ...industries.slice(4)].map((ind, i) => (
-              <IndustryCard key={i} {...ind} />
-            ))}
-          </div>
+        <div className="ind-grid">
+          {industries.map(({ name, count, img }, i) => (
+            <div className={`ind-card reveal d${Math.min(i % 4 + 1, 5)}`} key={name}>
+              <div className="ind-card-img-wrap">
+                <img src={img} alt={name} loading="lazy" />
+                <div className="ind-card-overlay" />
+              </div>
+              <div className="ind-card-body">
+                <span className="ind-card-name">{name}</span>
+                <span className="ind-card-count">{count}</span>
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="ind-footer reveal">
@@ -67,29 +92,5 @@ export default function Industries() {
         </div>
       </div>
     </section>
-  )
-}
-
-function IndustryCard({ icon: Icon, name, count }) {
-  return (
-    <div className="ind-card">
-      <div className="ind-card-inner">
-        <div className="ind-icon-wrap">
-          <div className="ind-icon-glass">
-            <Icon size={20} />
-          </div>
-          <div className="ind-icon-ring" />
-        </div>
-        <div className="ind-card-text">
-          <span className="ind-name">{name}</span>
-          <span className="ind-count">{count}</span>
-        </div>
-        <div className="ind-card-arrow">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-            <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
-      </div>
-    </div>
   )
 }

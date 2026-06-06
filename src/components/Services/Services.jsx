@@ -1,101 +1,168 @@
-import { useEffect, useRef } from 'react'
-import { FiAward, FiCheckCircle, FiPackage, FiSearch, FiShield, FiClipboard } from 'react-icons/fi'
+import { useState, useEffect, useRef } from 'react'
 import './Services.css'
 
 const services = [
   {
-    icon: FiAward, tag: '01',
+    tag: '01',
     title: 'Management System Certification',
-    desc: 'ISO 9001, ISO 14001, ISO 45001 — governance frameworks that elevate operational excellence to global standards.',
-    featured: true,
+    badge: 'ISO Standards',
+    desc: 'Governance frameworks that elevate operational excellence to globally recognised standards — driving quality, sustainability, and workforce safety across your enterprise.',
+    points: ['ISO 9001 Quality Management Systems', 'ISO 14001 Environmental Management', 'ISO 45001 Occupational Health & Safety'],
+    img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&h=700&q=85&auto=format&fit=crop&crop=faces,top',
+    cta: 'Request Certification',
   },
   {
-    icon: FiCheckCircle, tag: '02',
+    tag: '02',
     title: 'Industry Specific Certification',
-    desc: 'Precision certification for automotive, food safety, medical devices, aerospace, and regulated industries worldwide.',
+    badge: 'Sector Expertise',
+    desc: 'Precision certification engineered for automotive, food safety, medical devices, and aerospace — meeting the most stringent regulated industry requirements worldwide.',
+    points: ['IATF 16949 Automotive Quality', 'ISO 22000 Food Safety Management', 'ISO 13485 Medical Devices'],
+    img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&h=700&q=85&auto=format&fit=crop&crop=faces,top',
+    cta: 'Explore Sectors',
   },
   {
-    icon: FiPackage, tag: '03',
+    tag: '03',
     title: 'Product Certification',
-    desc: 'CE marking, product testing and regulatory approvals — ensuring your products command global market access.',
+    badge: 'Market Access',
+    desc: 'CE marking, product testing, and regulatory approvals — ensuring your products command unrestricted access to global markets with full compliance confidence.',
+    points: ['CE Marking & Regulatory Approval', 'Independent Product Testing', 'Market Access Documentation'],
+    img: 'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=900&h=700&q=85&auto=format&fit=crop&crop=faces,top',
+    cta: 'Start Approval Process',
   },
   {
-    icon: FiSearch, tag: '04',
+    tag: '04',
     title: 'Compliance Audits',
-    desc: 'Deep-dive internal and external audits revealing regulatory gaps before they become enterprise-level liabilities.',
-    featured: true,
+    badge: 'Risk Mitigation',
+    desc: 'Deep-dive internal and external audits that surface regulatory gaps before they escalate — transforming compliance vulnerabilities into structured corrective pathways.',
+    points: ['Internal Audit Programme Design', 'Regulatory Gap Analysis Reports', 'Corrective & Preventive Action Plans'],
+    img: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=900&h=700&q=85&auto=format&fit=crop&crop=faces,top',
+    cta: 'Schedule an Audit',
   },
   {
-    icon: FiShield, tag: '05',
+    tag: '05',
     title: 'Accreditation Support',
-    desc: 'End-to-end accreditation consulting for laboratories, inspection bodies, and certification authorities.',
+    badge: 'Body Accreditation',
+    desc: 'End-to-end accreditation consulting for laboratories, inspection bodies, and certification authorities seeking international recognition and operational credibility.',
+    points: ['ISO/IEC 17025 Laboratory Accreditation', 'ISO/IEC 17020 Inspection Bodies', 'ISO/IEC 17065 Certification Bodies'],
+    img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&h=700&q=85&auto=format&fit=crop&crop=center',
+    cta: 'Get Accredited',
   },
   {
-    icon: FiClipboard, tag: '06',
+    tag: '06',
     title: 'Inspection Services',
-    desc: 'Rigorous professional inspection across manufacturing, supply chains, and mission-critical service environments.',
+    badge: 'Verification',
+    desc: 'Rigorous professional inspection across manufacturing facilities, supply chains, and mission-critical service environments — delivering verified, defensible results.',
+    points: ['Manufacturing Floor Inspection', 'Supply Chain & Vendor Audits', 'Pre-shipment Verification'],
+    img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&h=700&q=85&auto=format&fit=crop&crop=faces,top',
+    cta: 'Book Inspection',
   },
 ]
 
 export default function Services() {
-  const ref = useRef(null)
+  const [active, setActive] = useState(0)
+  const [visible, setVisible] = useState(true)
+  const [sectionVisible, setSectionVisible] = useState(false)
+  const sectionRef = useRef(null)
+  const tabsRef = useRef(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('in')),
+      ([entry]) => entry.isIntersecting && setSectionVisible(true),
       { threshold: 0.08 }
     )
-    ref.current?.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+    if (sectionRef.current) observer.observe(sectionRef.current)
     return () => observer.disconnect()
   }, [])
 
+
+  const switchTab = (i) => {
+    if (i === active) return
+    setVisible(false)
+    setTimeout(() => { setActive(i); setVisible(true) }, 300)
+  }
+
+  const svc = services[active]
+
   return (
-    <section className="services section-pad" id="services" ref={ref}>
-      <div className="svc-bg" aria-hidden="true">
-        <div className="svc-orb svc-orb-a" />
-        <div className="svc-orb svc-orb-b" />
-        <div className="svc-grid-lines" />
-      </div>
+    <section className="services section-pad" id="services" ref={sectionRef}>
       <div className="container">
-        <div className="svc-header-row reveal">
-          <div>
-            <span className="eyebrow">What We Offer</span>
-            <h2 className="section-title">Services Built for<br /><em className="title-em">Enterprise Scale.</em></h2>
-          </div>
-          <p className="svc-header-lead">Six specialised disciplines, one integrated compliance authority — delivering certifications that open global doors.</p>
+
+        <div className={`svc-header reveal${sectionVisible ? ' in' : ''}`}>
+          <span className="eyebrow">What We Offer</span>
+          <h2 className="section-title">Services Built for<br /><em>Enterprise Scale.</em></h2>
+          <p className="section-lead">Six specialised disciplines, one integrated compliance authority — delivering certifications that open global doors.</p>
         </div>
 
-        <div className="svc-mosaic">
-          {services.map(({ icon: Icon, tag, title, desc, featured }, i) => (
-            <div
-              className={`svc-tile reveal reveal-delay-${(i % 4) + 1}${featured ? ' svc-tile--featured' : ''}`}
-              key={title}
-            >
-              <div className="svc-tile-inner">
-                <div className="svc-tile-top">
-                  <span className="svc-tag">{tag}</span>
-                  <div className="svc-icon-ring">
-                    <div className="svc-icon-glass">
-                      <Icon size={20} />
-                    </div>
-                  </div>
+        <div className={`svc-tabs-wrap reveal${sectionVisible ? ' in' : ''}`}>
+          <nav className="svc-tabs" role="tablist" aria-label="Service categories" ref={tabsRef}>
+            {services.map((s, i) => (
+              <button
+                key={s.tag}
+                role="tab"
+                aria-selected={active === i}
+                aria-controls="svc-panel"
+                className={`svc-tab${active === i ? ' svc-tab--active' : ''}`}
+                onClick={() => switchTab(i)}
+              >
+                <span className="svc-tab-num">{s.tag}</span>
+                <span className="svc-tab-label">{s.title}</span>
+              </button>
+            ))}
+          </nav>
+
+        </div>
+
+        <div
+          id="svc-panel"
+          role="tabpanel"
+          className={`svc-showcase reveal${sectionVisible ? ' in' : ''}`}
+        >
+          <div className={`svc-inner${visible ? ' is-visible' : ' is-hidden'}`}>
+
+            <div className="svc-content">
+              <div className="svc-meta">
+                <span className="svc-num-label">{svc.tag} / 06</span>
+                <span className="svc-badge-inline">{svc.badge}</span>
+              </div>
+              <h3 className="svc-title">{svc.title}</h3>
+              <p className="svc-desc">{svc.desc}</p>
+
+              <ul className="svc-benefits" aria-label="Key benefits">
+                {svc.points.map(p => (
+                  <li key={p}>
+                    <span className="svc-check" aria-hidden="true">
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                        <path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    {p}
+                  </li>
+                ))}
+              </ul>
+
+              <a href="#contact" className="svc-cta">
+                {svc.cta}
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5h10M9 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+            </div>
+
+            <div className="svc-visual">
+              <div className="svc-img-frame">
+                <img src={svc.img} alt={svc.title} loading="lazy" />
+                <div className="svc-img-gradient" aria-hidden="true" />
+                <div className="svc-img-badge" aria-hidden="true">
+                  <span className="svc-img-badge-dot" />
+                  {svc.badge}
                 </div>
-                <div className="svc-tile-body">
-                  <h3 className="svc-title">{title}</h3>
-                  <p className="svc-desc">{desc}</p>
-                </div>
-                <div className="svc-tile-footer">
-                  <span className="svc-learn">Learn more</span>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="svc-arrow" aria-hidden="true">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                {featured && <div className="svc-featured-glow" aria-hidden="true" />}
-                <div className="svc-border-sweep" aria-hidden="true" />
+                <div className="svc-img-counter" aria-hidden="true">{svc.tag}</div>
               </div>
             </div>
-          ))}
+
+          </div>
         </div>
+
       </div>
     </section>
   )

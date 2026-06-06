@@ -2,13 +2,20 @@ import { useEffect, useRef, useState } from 'react'
 import './Stats.css'
 
 const stats = [
-  { end: 20, suffix: '+', label: 'Years of Authority', sub: 'Industry leadership since 2004' },
+  { end: 20,   suffix: '+', label: 'Years of Authority',    sub: 'Industry leadership since 2004' },
   { end: 6000, suffix: '+', label: 'Enterprises Certified', sub: 'Across every major sector' },
-  { end: 98, suffix: '%', label: 'First-Pass Rate', sub: 'Unmatched in the industry' },
-  { end: 40, suffix: '+', label: 'Countries Served', sub: 'True global footprint' },
+  { end: 98,   suffix: '%', label: 'First-Pass Rate',       sub: 'Unmatched in the industry' },
+  { end: 40,   suffix: '+', label: 'Countries Served',      sub: 'True global footprint' },
 ]
 
-function Counter({ end, suffix, duration = 2000 }) {
+const isoBadges = [
+  { num: 'ISO', label: '9001' },
+  { num: 'ISO', label: '14001' },
+  { num: 'ISO', label: '45001' },
+  { num: 'IATF', label: '16949' },
+]
+
+function Counter({ end, suffix, duration = 1400 }) {
   const [count, setCount] = useState(0)
   const ref = useRef(null)
   const started = useRef(false)
@@ -48,21 +55,31 @@ export default function Stats() {
 
   return (
     <section className="stats-band" id="stats" ref={ref}>
-      <div className="stats-band-bg" aria-hidden="true">
-        <div className="sb-line-top" />
-        <div className="sb-line-btm" />
-        <div className="sb-orb" />
-      </div>
       <div className="container">
+        <div className="stats-header reveal">
+          <div className="stats-header-left">
+            <span className="stats-kicker">Proven at Scale</span>
+            <h2 className="stats-headline">
+              Numbers that<br /><em>command trust.</em>
+            </h2>
+          </div>
+          <div className="stats-iso-badges">
+            {isoBadges.map(({ num, label }) => (
+              <div className="iso-badge" key={label}>
+                <span className="iso-badge-num">{num}</span>
+                <span className="iso-badge-label">{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="stats-row">
           {stats.map(({ end, suffix, label, sub }, i) => (
             <div className={`stat-block reveal reveal-delay-${i + 1}`} key={label}>
-              <span className="sb-num">
-                <Counter end={end} suffix={suffix} />
-              </span>
+              <div className="sb-accent" aria-hidden="true" />
+              <span className="sb-num"><Counter end={end} suffix={suffix} /></span>
               <span className="sb-label">{label}</span>
               <span className="sb-sub">{sub}</span>
-              {i < stats.length - 1 && <div className="sb-sep" aria-hidden="true" />}
             </div>
           ))}
         </div>

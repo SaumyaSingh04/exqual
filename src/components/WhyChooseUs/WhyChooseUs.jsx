@@ -9,16 +9,16 @@ const pillars = [
     body: 'Since 2004, ExQual has operated at the intersection of precision and trust. Our consultants have navigated the most complex regulatory landscapes across 40+ countries — bringing institutional knowledge that no generalist firm can replicate.',
     metric: '20+',
     metricLabel: 'Years Active',
-    accent: 'left',
+    img: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=85&auto=format&fit=crop',
   },
   {
     num: '02',
     tag: 'Proven Track Record',
     title: 'A 98% First-Pass Certification Rate',
-    body: 'Our proprietary pre-audit framework eliminates surprises. We close every gap before the certification body arrives — resulting in a pass rate that stands as one of the highest in the industry and a reputation built entirely on outcomes.',
+    body: 'Our proprietary pre-audit framework eliminates surprises. We close every gap before the certification body arrives — resulting in a pass rate that stands as one of the highest in the industry.',
     metric: '98%',
     metricLabel: 'First-Pass Rate',
-    accent: 'right',
+    img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=85&auto=format&fit=crop',
   },
   {
     num: '03',
@@ -27,7 +27,7 @@ const pillars = [
     body: 'From multinational manufacturers to regulated healthcare groups, our methodology scales. We design compliance architectures that integrate with your existing governance structures — not systems bolted on as an afterthought.',
     metric: '6,000+',
     metricLabel: 'Clients Certified',
-    accent: 'left',
+    img: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=85&auto=format&fit=crop',
   },
   {
     num: '04',
@@ -36,7 +36,7 @@ const pillars = [
     body: 'Certification is a milestone, not the destination. Our surveillance and maintenance programmes ensure your accreditation remains a living, competitive advantage — not a document that gathers dust until the next audit cycle.',
     metric: '40+',
     metricLabel: 'Countries Served',
-    accent: 'right',
+    img: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&q=85&auto=format&fit=crop',
   },
 ]
 
@@ -48,54 +48,42 @@ export default function WhyChooseUs() {
       entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('in')),
       { threshold: 0.1 }
     )
-    ref.current?.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+    ref.current?.querySelectorAll('.reveal, .fade-left, .fade-right').forEach(el => observer.observe(el))
     return () => observer.disconnect()
   }, [])
 
   return (
     <section className="why section-pad" id="why-us" ref={ref}>
-      <div className="why-bg" aria-hidden="true">
-        <div className="why-orb-a" />
-        <div className="why-orb-b" />
-      </div>
       <div className="container">
         <div className="why-header reveal">
           <span className="eyebrow">Why ExQual</span>
-          <h2 className="section-title">
-            Not Just Certified.<br />
-            <em className="title-em">Transformed.</em>
-          </h2>
-          <p className="section-lead">
-            Four pillars that separate ExQual from every other compliance firm operating today.
-          </p>
+          <h2 className="section-title">Not Just Certified.<br /><em>Transformed.</em></h2>
+          <p className="section-lead">Four pillars that separate ExQual from every other compliance firm operating today.</p>
         </div>
 
         <div className="why-pillars">
-          {pillars.map(({ num, tag, title, body, metric, metricLabel, accent }, i) => (
-            <div
-              className={`why-pillar reveal reveal-delay-${(i % 3) + 1}`}
-              key={num}
-              data-accent={accent}
-            >
-              <div className="pillar-left" data-num={num}>
-                <div className="pillar-num-block">
-                  <span className="pillar-num">{num}</span>
-                  <span className="pillar-tag">{tag}</span>
+          {pillars.map(({ num, tag, title, body, metric, metricLabel, img }, i) => {
+            const rev = i % 2 === 1
+            return (
+              <div className={`why-row${rev ? ' why-row--rev' : ''}`} key={num}>
+                <div className={`why-img-col ${rev ? 'fade-right' : 'fade-left'}`}>
+                  <div className="why-img-wrap">
+                    <img src={img} alt={title} loading="lazy" />
+                    <div className="why-metric-overlay">
+                      <span className="why-metric-num">{metric}</span>
+                      <span className="why-metric-lbl">{metricLabel}</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="pillar-metric-block">
-                  <span className="pillar-metric">{metric}</span>
-                  <span className="pillar-metric-label">{metricLabel}</span>
+                <div className={`why-content-col ${rev ? 'fade-left' : 'fade-right'}`}>
+                  <span className="why-num-tag">{num} — {tag}</span>
+                  <h3 className="why-title">{title}</h3>
+                  <p className="why-body">{body}</p>
+                  <div className="why-rule" />
                 </div>
               </div>
-              <div className="pillar-divider" aria-hidden="true" />
-              <div className="pillar-right">
-                <h3 className="pillar-title">{title}</h3>
-                <p className="pillar-body">{body}</p>
-                <div className="pillar-line" aria-hidden="true" />
-              </div>
-              <div className="pillar-accent-bar" aria-hidden="true" />
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

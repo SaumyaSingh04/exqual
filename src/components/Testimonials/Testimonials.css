@@ -1,6 +1,6 @@
 /* ── SECTION ────────────────────────────────────────── */
 .testi {
-  background: var(--black);
+  background: var(--off);
   position: relative;
   overflow: hidden;
 }
@@ -20,7 +20,7 @@
   width: 560px;
   height: 560px;
   border-radius: 50%;
-  opacity: 0.1;
+  opacity: 0.06;
   filter: blur(100px);
   transition: background 1s var(--ease);
 }
@@ -32,7 +32,7 @@
   width: 380px;
   height: 380px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(122,31,61,0.04);
   filter: blur(80px);
 }
 
@@ -60,8 +60,8 @@
   width: 100%;
   padding: 14px 16px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--rule);
+  background: var(--white);
   cursor: pointer;
   text-align: left;
   transition: background 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.25s var(--ease);
@@ -83,14 +83,14 @@
 }
 
 .testi-tab:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.14);
+  background: var(--cherry-pale);
+  border-color: rgba(122,31,61,0.15);
   transform: translateX(4px);
 }
 
 .testi-tab.active {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: var(--cherry-pale);
+  border-color: rgba(122,31,61,0.18);
 }
 
 .testi-tab.active::before { opacity: 1; }
@@ -120,7 +120,7 @@
 .ttab-name {
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--white);
+  color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -128,7 +128,7 @@
 
 .ttab-company {
   font-size: 0.72rem;
-  color: var(--muted);
+  color: var(--ink-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -138,21 +138,20 @@
   font-size: 0.64rem;
   font-weight: 700;
   letter-spacing: 0.5px;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--ink-faint);
   flex-shrink: 0;
 }
 
-/* ── MAIN GLASS CARD ────────────────────────────────── */
+/* ── MAIN CARD ──────────────────────────────────────── */
 .testi-card {
   position: relative;
   border-radius: 24px;
   padding: 52px 56px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: var(--white);
+  border: 1px solid var(--rule-md);
   overflow: hidden;
   transition: opacity 0.28s var(--ease), transform 0.28s var(--ease);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.05);
 }
 
 .testi-card.exit {
@@ -172,7 +171,7 @@
   width: 260px;
   height: 260px;
   border-radius: 50%;
-  opacity: 0.12;
+  opacity: 0.06;
   filter: blur(60px);
   transition: background 1s var(--ease);
   pointer-events: none;
@@ -208,7 +207,7 @@
   position: relative;
   font-size: 1.2rem;
   line-height: 1.85;
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--ink-soft);
   font-style: italic;
   margin-bottom: 44px;
   padding-left: 28px;
@@ -222,8 +221,8 @@
   font-family: var(--font-display);
   font-size: 4rem;
   line-height: 1;
-  color: var(--cherry-bright);
-  opacity: 0.5;
+  color: var(--cherry);
+  opacity: 0.25;
   font-style: normal;
   pointer-events: none;
 }
@@ -257,7 +256,7 @@
   inset: -4px;
   border-radius: 50%;
   border: 1.5px solid;
-  opacity: 0.4;
+  opacity: 0.3;
   transition: border-color 0.6s var(--ease);
 }
 
@@ -270,17 +269,17 @@
 .testi-name {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--ink);
 }
 
 .testi-role {
   font-size: 0.82rem;
-  color: var(--muted);
+  color: var(--ink-muted);
 }
 
 .testi-country {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.28);
+  color: var(--ink-faint);
   letter-spacing: 0.3px;
 }
 
@@ -295,7 +294,7 @@
   width: 24px;
   border-radius: 2px;
   border: none;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--rule-md);
   cursor: pointer;
   padding: 0;
   transition: background 0.4s var(--ease), width 0.4s var(--ease-out);
@@ -307,48 +306,22 @@
 
 /* ── RESPONSIVE ─────────────────────────────────────── */
 @media (max-width: 900px) {
-  .testi-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .testi-sidebar {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .testi-tab {
-    flex: 1;
-    min-width: 140px;
-    padding: 10px 12px;
-  }
-
+  .testi-layout { grid-template-columns: 1fr; }
+  .testi-sidebar { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .testi-tab { flex: 1; min-width: 140px; padding: 10px 12px; }
   .testi-tab:hover { transform: none; }
   .testi-tab::before { display: none; }
   .ttab-cert { display: none; }
 }
-
 @media (max-width: 600px) {
-  .testi-card {
-    padding: 32px 28px;
-  }
-
-  .testi-quote {
-    font-size: 1rem;
-    padding-left: 20px;
-  }
-
+  .testi-card { padding: 28px 22px; }
+  .testi-quote { font-size: 0.97rem; padding-left: 18px; margin-bottom: 28px; }
+  .testi-quotemark { font-size: 3rem; }
   .testi-sidebar { gap: 6px; }
-
-  .testi-tab {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 10px 8px;
-    min-width: 80px;
-  }
-
+  .testi-tab { flex-direction: column; align-items: center; text-align: center; padding: 10px 8px; min-width: 76px; }
   .ttab-body { align-items: center; }
-  .ttab-name { font-size: 0.7rem; }
+  .ttab-name { font-size: 0.68rem; }
   .ttab-company { display: none; }
+  .testi-author { gap: 14px; margin-bottom: 28px; }
+  .testi-name { font-size: 0.92rem; }
 }

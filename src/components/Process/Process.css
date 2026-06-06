@@ -211,18 +211,16 @@
 
 /* ── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .proc-journey::before { left: 30px; transform: none; }
-
+  .proc-journey::before { left: 28px; transform: none; }
   .proc-step {
-    grid-template-columns: 60px 1fr;
+    grid-template-columns: 56px 1fr;
     grid-template-rows: auto;
     min-height: auto;
   }
-
   .proc-step[data-side='right'] .proc-step-content,
   .proc-step[data-side='left']  .proc-step-content {
     order: 2;
-    padding-left: 36px;
+    padding-left: 28px;
     padding-right: 0;
     text-align: left;
   }
@@ -233,7 +231,7 @@
   .proc-step[data-side='left'] .proc-meta-row { justify-content: flex-start; }
   .proc-step-content::before { display: none; }
 }
-
 @media (max-width: 540px) {
-  .proc-title { font-size: 1.4rem; }
+  .proc-title { font-size: 1.35rem; }
+  .proc-desc { font-size: 0.88rem; }
 }

@@ -9,9 +9,9 @@ export default function CTA() {
       </div>
       <div className="container cta-inner">
         <div className="cta-content">
-          <span className="section-label light">Ready to Get Certified?</span>
-          <h2 className="section-title light">Take the First Step Toward<br />International Recognition</h2>
-          <p className="section-sub light">
+          <span className="section-label">Ready to Get Certified?</span>
+          <h2 className="section-title">Take the First Step Toward<br />International Recognition</h2>
+          <p className="section-sub">
             Join over 6,000 businesses that have achieved world-class certification with ExQual Compliance. Our experts are ready to guide you every step of the way.
           </p>
         </div>
