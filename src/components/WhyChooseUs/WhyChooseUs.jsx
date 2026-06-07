@@ -1,90 +1,113 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './WhyChooseUs.css'
 
+function useCountUp(target, duration = 1400, started = false) {
+  const [value, setValue] = useState(0)
+  useEffect(() => {
+    if (!started) return
+    const isFloat = target % 1 !== 0
+    const start = performance.now()
+    const raf = (now) => {
+      const p = Math.min((now - start) / duration, 1)
+      const ease = 1 - Math.pow(1 - p, 3)
+      setValue(isFloat ? +(target * ease).toFixed(1) : Math.round(target * ease))
+      if (p < 1) requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+  }, [started, target, duration])
+  return value
+}
+
+function StatNumber({ raw, started, delay = 0 }) {
+  const [go, setGo] = useState(false)
+  useEffect(() => { if (started) { const t = setTimeout(() => setGo(true), delay); return () => clearTimeout(t) } }, [started, delay])
+  const numeric = parseFloat(raw.replace(/[^0-9.]/g, ''))
+  const suffix = raw.replace(/[0-9.]/g, '')
+  const count = useCountUp(numeric, 1400, go)
+  return <>{count}{suffix}</>
+}
+
+const supporting = [
+  { num: '20+',   label: 'Years of institutional authority', sub: 'Est. 2004' },
+  { num: '6,000+',label: 'Enterprise clients certified', sub: 'Across all sectors' },
+  { num: '40+',   label: 'Countries served globally', sub: 'Six continents' },
+]
+
 const pillars = [
-  {
-    num: '01',
-    tag: 'Global Authority',
-    title: 'Two Decades of Unrivalled Expertise',
-    body: 'Since 2004, ExQual has operated at the intersection of precision and trust. Our consultants have navigated the most complex regulatory landscapes across 40+ countries — bringing institutional knowledge that no generalist firm can replicate.',
-    metric: '20+',
-    metricLabel: 'Years Active',
-    img: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=85&auto=format&fit=crop',
-  },
-  {
-    num: '02',
-    tag: 'Proven Track Record',
-    title: 'A 98% First-Pass Certification Rate',
-    body: 'Our proprietary pre-audit framework eliminates surprises. We close every gap before the certification body arrives — resulting in a pass rate that stands as one of the highest in the industry.',
-    metric: '98%',
-    metricLabel: 'First-Pass Rate',
-    img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=85&auto=format&fit=crop',
-  },
-  {
-    num: '03',
-    tag: 'Enterprise Scale',
-    title: 'Built for the Complexity of Large Organisations',
-    body: 'From multinational manufacturers to regulated healthcare groups, our methodology scales. We design compliance architectures that integrate with your existing governance structures — not systems bolted on as an afterthought.',
-    metric: '6,000+',
-    metricLabel: 'Clients Certified',
-    img: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=85&auto=format&fit=crop',
-  },
-  {
-    num: '04',
-    tag: 'Sustained Partnership',
-    title: 'Compliance That Outlasts the Certificate',
-    body: 'Certification is a milestone, not the destination. Our surveillance and maintenance programmes ensure your accreditation remains a living, competitive advantage — not a document that gathers dust until the next audit cycle.',
-    metric: '40+',
-    metricLabel: 'Countries Served',
-    img: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&q=85&auto=format&fit=crop',
-  },
+  { index: '01', tag: 'Global Authority',      body: 'Regulatory intelligence across six continents — institutional depth no generalist can replicate.' },
+  { index: '02', tag: 'Proven Track Record',   body: 'Pre-audit gap closure that eliminates surprises before the certification body arrives.' },
+  { index: '03', tag: 'Enterprise Scale',      body: 'Compliance architectures integrated with existing governance — not bolted on.' },
+  { index: '04', tag: 'Sustained Partnership', body: 'Surveillance programmes that keep accreditation a living competitive advantage.' },
 ]
 
 export default function WhyChooseUs() {
-  const ref = useRef(null)
+  const sectionRef = useRef(null)
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('in')),
-      { threshold: 0.1 }
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect() } },
+      { threshold: 0.12 }
     )
-    ref.current?.querySelectorAll('.reveal, .fade-left, .fade-right').forEach(el => observer.observe(el))
+    if (sectionRef.current) observer.observe(sectionRef.current)
     return () => observer.disconnect()
   }, [])
 
   return (
-    <section className="why section-pad" id="why-us" ref={ref}>
+    <section className="why section-pad" id="why-us" ref={sectionRef}>
       <div className="container">
-        <div className="why-header reveal">
+
+        <div className={`why-header${visible ? ' in' : ''}`}>
           <span className="eyebrow">Why ExQual</span>
           <h2 className="section-title">Not Just Certified.<br /><em>Transformed.</em></h2>
-          <p className="section-lead">Four pillars that separate ExQual from every other compliance firm operating today.</p>
         </div>
 
-        <div className="why-pillars">
-          {pillars.map(({ num, tag, title, body, metric, metricLabel, img }, i) => {
-            const rev = i % 2 === 1
-            return (
-              <div className={`why-row${rev ? ' why-row--rev' : ''}`} key={num}>
-                <div className={`why-img-col ${rev ? 'fade-right' : 'fade-left'}`}>
-                  <div className="why-img-wrap">
-                    <img src={img} alt={title} loading="lazy" />
-                    <div className="why-metric-overlay">
-                      <span className="why-metric-num">{metric}</span>
-                      <span className="why-metric-lbl">{metricLabel}</span>
-                    </div>
-                  </div>
+        {/* ── METRICS STAGE ── */}
+        <div className={`why-stage${visible ? ' in' : ''}`}>
+
+          {/* Hero metric */}
+          <div className="why-hero-metric">
+            <div className="why-hero-bg-rule" />
+            <span className="why-hero-eyebrow">First-Pass Certification Rate</span>
+            <p className="why-hero-num">
+              <StatNumber raw="98%" started={visible} delay={200} />
+            </p>
+            <p className="why-hero-descriptor">
+              Industry average sits near 60 %. Our pre-audit framework closes every gap before the assessor arrives.
+            </p>
+            <div className="why-hero-badge">Industry benchmark: ~60%</div>
+          </div>
+
+          {/* Supporting metrics */}
+          <div className="why-support-col">
+            {supporting.map(({ num, label, sub }, i) => (
+              <div className={`why-support-item d${i + 1}${visible ? ' in' : ''}`} key={label}>
+                <div className="why-support-num">
+                  <StatNumber raw={num} started={visible} delay={400 + i * 150} />
                 </div>
-                <div className={`why-content-col ${rev ? 'fade-left' : 'fade-right'}`}>
-                  <span className="why-num-tag">{num} — {tag}</span>
-                  <h3 className="why-title">{title}</h3>
-                  <p className="why-body">{body}</p>
-                  <div className="why-rule" />
+                <div className="why-support-meta">
+                  <span className="why-support-label">{label}</span>
+                  <span className="why-support-sub">{sub}</span>
                 </div>
               </div>
-            )
-          })}
+            ))}
+          </div>
+
         </div>
+
+        {/* ── DIFFERENTIATORS STRIP ── */}
+        <div className="why-pillars">
+          {pillars.map(({ index, tag, body }, i) => (
+            <div className={`why-pillar d${i + 1}${visible ? ' in' : ''}`} key={tag}>
+              <span className="why-pillar-index">{index}</span>
+              <div className="why-pillar-content">
+                <span className="why-pillar-tag">{tag}</span>
+                <p className="why-pillar-body">{body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   )

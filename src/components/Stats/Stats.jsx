@@ -4,7 +4,7 @@ import './Stats.css'
 const stats = [
   { end: 20,   suffix: '+', label: 'Years of Authority',    sub: 'Industry leadership since 2004' },
   { end: 6000, suffix: '+', label: 'Enterprises Certified', sub: 'Across every major sector' },
-  { end: 98,   suffix: '%', label: 'First-Pass Rate',       sub: 'Unmatched in the industry' },
+  { end: 98,   suffix: '%', label: 'First-Pass Certification Rate', sub: 'Unmatched in the industry' },
   { end: 40,   suffix: '+', label: 'Countries Served',      sub: 'True global footprint' },
 ]
 
@@ -75,7 +75,7 @@ export default function Stats() {
 
         <div className="stats-row">
           {stats.map(({ end, suffix, label, sub }, i) => (
-            <div className={`stat-block reveal reveal-delay-${i + 1}`} key={label}>
+            <div className={`stat-block reveal reveal-delay-${i + 1}`} key={i}>
               <div className="sb-accent" aria-hidden="true" />
               <span className="sb-num"><Counter end={end} suffix={suffix} /></span>
               <span className="sb-label">{label}</span>

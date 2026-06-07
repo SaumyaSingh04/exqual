@@ -6,13 +6,17 @@
 /* ─── Header ──────────────────────────────────────────── */
 .svc-header {
   max-width: 680px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
+
+.svc-header .eyebrow { margin-bottom: 8px; }
+.svc-header .section-title { margin-bottom: 8px; }
+.svc-header .section-lead { line-height: 1.65; font-size: 0.97rem; }
 
 /* ─── Tab Navigation ──────────────────────────────────── */
 .svc-tabs-wrap {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .svc-tabs {
@@ -321,7 +325,9 @@
   .svc-tab { padding: 10px 12px 12px; }
   .svc-tab-label { font-size: 0.72rem; }
   .svc-tab-num { display: none; }
-  .svc-header { margin-bottom: 24px; }
+  .svc-header { margin-bottom: 12px; }
+  .svc-header .eyebrow { margin-bottom: 6px; }
+  .svc-header .section-title { margin-bottom: 6px; }
   .svc-showcase { border-radius: 14px; }
   .svc-img-frame { height: 240px; }
   .svc-content { padding: 22px 18px 28px; }

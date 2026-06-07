@@ -2,10 +2,10 @@ import { useEffect, useRef } from 'react'
 import './Hero.css'
 
 const stats = [
-  { n: '20+',    l: 'Years Active' },
-  { n: '6,000+', l: 'Enterprises' },
-  { n: '98%',    l: 'First-Pass Rate' },
-  { n: '40+',    l: 'Countries' },
+  { n: '20+',    l: 'Years Active',     end: 20  },
+  { n: '6,000+', l: 'Enterprises',      end: 6000 },
+  { n: '98%',    l: 'First-Pass Rate',  end: 98  },
+  { n: '40+',    l: 'Countries',        end: 40  },
 ]
 
 const trustBadges = [
@@ -16,6 +16,19 @@ const trustBadges = [
   'Accreditation Support',
 ]
 
+function countUp(el, end, suffix, duration = 1200) {
+  const start = performance.now()
+  const isLarge = end >= 1000
+  const step = ts => {
+    const p = Math.min((ts - start) / duration, 1)
+    const ease = 1 - Math.pow(1 - p, 3)
+    const val = Math.round(ease * end)
+    el.textContent = isLarge ? val.toLocaleString() + suffix : val + suffix
+    if (p < 1) requestAnimationFrame(step)
+  }
+  requestAnimationFrame(step)
+}
+
 export default function Hero() {
   const ref = useRef(null)
 
@@ -23,7 +36,20 @@ export default function Hero() {
     const t = setTimeout(() => {
       ref.current?.querySelectorAll('.reveal').forEach(el => el.classList.add('in'))
     }, 60)
-    return () => clearTimeout(t)
+
+    // counter animation on stats entering viewport
+    const nums = ref.current?.querySelectorAll('.hstat-num[data-end]')
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return
+        const el = entry.target
+        countUp(el, +el.dataset.end, el.dataset.suffix)
+        io.unobserve(el)
+      })
+    }, { threshold: 0.5 })
+    nums?.forEach(n => io.observe(n))
+
+    return () => { clearTimeout(t); io.disconnect() }
   }, [])
 
   return (
@@ -61,12 +87,15 @@ export default function Hero() {
           <div className="h-stats reveal d5">
             <div className="hstats-rule" />
             <div className="hstats-row">
-              {stats.map(({ n, l }) => (
-                <div className="hstat" key={l}>
-                  <span className="hstat-num">{n}</span>
-                  <span className="hstat-label">{l}</span>
-                </div>
-              ))}
+              {stats.map(({ n, l, end }) => {
+                const suffix = n.replace(/[\d,]/g, '')
+                return (
+                  <div className="hstat" key={l}>
+                    <span className="hstat-num" data-end={end} data-suffix={suffix}>{n}</span>
+                    <span className="hstat-label">{l}</span>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -86,7 +115,7 @@ export default function Hero() {
               <div className="hfc-icon">✓</div>
               <div>
                 <span className="hfc-num">98%</span>
-                <span className="hfc-text">First-Pass<br />Certification Rate</span>
+                <span className="hfc-text">First-Pass Certification Rate</span>
               </div>
             </div>
             <div className="hero-float-badge">
@@ -99,18 +128,20 @@ export default function Hero() {
 
       {/* TRUST BAR */}
       <div className="trust-bar">
-        <div className="container trust-bar-inner">
-          <span className="trust-bar-label">Our Services</span>
+        <div className="trust-bar-inner">
+          <span className="trust-bar-label">OUR SERVICES</span>
           <div className="trust-bar-divider" />
-          <div className="trust-bar-items">
-            {trustBadges.map(b => (
-              <span className="trust-item" key={b}>
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                  <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                {b}
-              </span>
-            ))}
+          <div className="trust-bar-track-wrap">
+            <div className="trust-bar-track">
+              {[...trustBadges, ...trustBadges].map((b, i) => (
+                <span className="trust-item" key={i}>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  {b}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
