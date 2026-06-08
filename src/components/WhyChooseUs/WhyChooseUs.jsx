@@ -1,113 +1,176 @@
 import { useEffect, useRef, useState } from 'react'
 import './WhyChooseUs.css'
 
-function useCountUp(target, duration = 1400, started = false) {
-  const [value, setValue] = useState(0)
+function useCounter(target, active, duration = 1800) {
+  const [val, setVal] = useState(0)
   useEffect(() => {
-    if (!started) return
-    const isFloat = target % 1 !== 0
-    const start = performance.now()
-    const raf = (now) => {
-      const p = Math.min((now - start) / duration, 1)
-      const ease = 1 - Math.pow(1 - p, 3)
-      setValue(isFloat ? +(target * ease).toFixed(1) : Math.round(target * ease))
-      if (p < 1) requestAnimationFrame(raf)
+    if (!active) return
+    let start = null
+    const step = ts => {
+      if (!start) start = ts
+      const p = Math.min((ts - start) / duration, 1)
+      setVal(Math.round((1 - Math.pow(1 - p, 4)) * target))
+      if (p < 1) requestAnimationFrame(step)
     }
-    requestAnimationFrame(raf)
-  }, [started, target, duration])
-  return value
+    requestAnimationFrame(step)
+  }, [active, target, duration])
+  return val
 }
-
-function StatNumber({ raw, started, delay = 0 }) {
-  const [go, setGo] = useState(false)
-  useEffect(() => { if (started) { const t = setTimeout(() => setGo(true), delay); return () => clearTimeout(t) } }, [started, delay])
-  const numeric = parseFloat(raw.replace(/[^0-9.]/g, ''))
-  const suffix = raw.replace(/[0-9.]/g, '')
-  const count = useCountUp(numeric, 1400, go)
-  return <>{count}{suffix}</>
-}
-
-const supporting = [
-  { num: '20+',   label: 'Years of institutional authority', sub: 'Est. 2004' },
-  { num: '6,000+',label: 'Enterprise clients certified', sub: 'Across all sectors' },
-  { num: '40+',   label: 'Countries served globally', sub: 'Six continents' },
-]
 
 const pillars = [
-  { index: '01', tag: 'Global Authority',      body: 'Regulatory intelligence across six continents — institutional depth no generalist can replicate.' },
-  { index: '02', tag: 'Proven Track Record',   body: 'Pre-audit gap closure that eliminates surprises before the certification body arrives.' },
-  { index: '03', tag: 'Enterprise Scale',      body: 'Compliance architectures integrated with existing governance — not bolted on.' },
-  { index: '04', tag: 'Sustained Partnership', body: 'Surveillance programmes that keep accreditation a living competitive advantage.' },
+  {
+    index: '01',
+    tag: 'Global Authority',
+    stat: '6', suffix: ' Continents',
+    body: 'Regulatory intelligence spanning six continents — institutional depth no generalist firm can replicate.',
+    detail: 'Recognised across 48 regulatory jurisdictions.',
+  },
+  {
+    index: '02',
+    tag: 'Proven Track Record',
+    stat: '98', suffix: '%',
+    body: 'Pre-audit gap closure that eliminates surprises before the certification body arrives.',
+    detail: 'First-pass rate across all engagements since founding.',
+  },
+  {
+    index: '03',
+    tag: 'Enterprise Scale',
+    stat: '320', suffix: '+',
+    body: 'Compliance architectures integrated with governance frameworks — not bolted on as afterthoughts.',
+    detail: 'Enterprises trust ExQual to architect standards-grade compliance.',
+  },
+  {
+    index: '04',
+    tag: 'Sustained Partnership',
+    stat: '94', suffix: '%',
+    body: 'Surveillance programmes that keep accreditation a living competitive advantage.',
+    detail: 'Client retention rate reflecting long-term strategic partnership.',
+  },
 ]
 
-export default function WhyChooseUs() {
-  const sectionRef = useRef(null)
+function Pillar({ pillar, index }) {
+  const ref = useRef(null)
   const [visible, setVisible] = useState(false)
+  const count = useCounter(parseInt(pillar.stat), visible)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect() } },
-      { threshold: 0.12 }
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect() } },
+      { threshold: 0.25 }
     )
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
+    if (ref.current) obs.observe(ref.current)
+    return () => obs.disconnect()
   }, [])
 
   return (
-    <section className="why section-pad" id="why-us" ref={sectionRef}>
+    <div
+      ref={ref}
+      className={`wcu-pillar${visible ? ' in' : ''}`}
+      style={{ transitionDelay: `${index * 80}ms` }}
+    >
+      <div className="wcu-pillar-node">
+        <div className="wcu-pillar-dot" />
+      </div>
+      <div className="wcu-pillar-body-wrap">
+        <div className="wcu-pillar-head">
+          <span className="wcu-pillar-idx">{pillar.index}</span>
+          <span className="wcu-pillar-tag">{pillar.tag}</span>
+          <span className="wcu-pillar-num">{count}{pillar.suffix}</span>
+        </div>
+        <p className="wcu-pillar-text">{pillar.body}</p>
+        <p className="wcu-pillar-detail">{pillar.detail}</p>
+        <div className="wcu-pillar-line-fill" />
+      </div>
+    </div>
+  )
+}
+
+export default function WhyChooseUs() {
+  const sectionRef = useRef(null)
+  const trackRef = useRef(null)
+  const [anchorIn, setAnchorIn] = useState(false)
+  const heroCount = useCounter(98, anchorIn, 2200)
+
+  // Anchor reveal
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setAnchorIn(true); obs.disconnect() } },
+      { threshold: 0.1 }
+    )
+    if (sectionRef.current) obs.observe(sectionRef.current)
+    return () => obs.disconnect()
+  }, [])
+
+  // Scroll-driven line draw
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+    const update = () => {
+      const { top, height } = track.getBoundingClientRect()
+      const vh = window.innerHeight
+      const progress = Math.max(0, Math.min(1, (vh - top) / (height + vh * 0.3)))
+      track.style.setProperty('--progress', progress)
+    }
+    window.addEventListener('scroll', update, { passive: true })
+    update()
+    return () => window.removeEventListener('scroll', update)
+  }, [])
+
+  return (
+    <section className="wcu section-pad" id="why-us" ref={sectionRef}>
       <div className="container">
 
-        <div className={`why-header${visible ? ' in' : ''}`}>
+        <div className={`wcu-eyebrow-row${anchorIn ? ' in' : ''}`}>
           <span className="eyebrow">Why ExQual</span>
-          <h2 className="section-title">Not Just Certified.<br /><em>Transformed.</em></h2>
         </div>
 
-        {/* ── METRICS STAGE ── */}
-        <div className={`why-stage${visible ? ' in' : ''}`}>
+        <div className="wcu-stage">
 
-          {/* Hero metric */}
-          <div className="why-hero-metric">
-            <div className="why-hero-bg-rule" />
-            <span className="why-hero-eyebrow">First-Pass Certification Rate</span>
-            <p className="why-hero-num">
-              <StatNumber raw="98%" started={visible} delay={200} />
-            </p>
-            <p className="why-hero-descriptor">
-              Industry average sits near 60 %. Our pre-audit framework closes every gap before the assessor arrives.
-            </p>
-            <div className="why-hero-badge">Industry benchmark: ~60%</div>
+          {/* ── LEFT ANCHOR ── */}
+          <div className={`wcu-anchor${anchorIn ? ' in' : ''}`}>
+            <div className="wcu-anchor-grid-bg" />
+
+            <div className="wcu-anchor-content">
+              <p className="wcu-anchor-overline">Flagship Performance Metric</p>
+
+              <div className="wcu-anchor-hero">
+                <span className="wcu-anchor-big">{heroCount}</span>
+                <span className="wcu-anchor-pct">%</span>
+              </div>
+
+              <p className="wcu-anchor-metric-label">First-Pass Certification Rate</p>
+
+              <div className="wcu-anchor-rule" />
+
+              <h2 className="wcu-anchor-headline">
+                Not Just Certified.<br /><em>Transformed.</em>
+              </h2>
+
+              <p className="wcu-anchor-desc">
+                Across every engagement ExQual has led — from ISO&nbsp;9001 to AS9100 to
+                IATF&nbsp;16949 — clients achieve certification on the first attempt.
+                No re-audits. No surprises.
+              </p>
+
+              <div className="wcu-anchor-standards">
+                {['ISO 9001', 'AS9100', 'IATF 16949', 'ISO 45001', 'ISO 14001'].map(s => (
+                  <span key={s}>{s}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="wcu-anchor-glow" />
           </div>
 
-          {/* Supporting metrics */}
-          <div className="why-support-col">
-            {supporting.map(({ num, label, sub }, i) => (
-              <div className={`why-support-item d${i + 1}${visible ? ' in' : ''}`} key={label}>
-                <div className="why-support-num">
-                  <StatNumber raw={num} started={visible} delay={400 + i * 150} />
-                </div>
-                <div className="why-support-meta">
-                  <span className="why-support-label">{label}</span>
-                  <span className="why-support-sub">{sub}</span>
-                </div>
-              </div>
+          {/* ── RIGHT PILLAR TIMELINE ── */}
+          <div className="wcu-timeline">
+            <div className="wcu-timeline-track" ref={trackRef} />
+            {pillars.map((p, i) => (
+              <Pillar key={p.tag} pillar={p} index={i} />
             ))}
           </div>
 
         </div>
-
-        {/* ── DIFFERENTIATORS STRIP ── */}
-        <div className="why-pillars">
-          {pillars.map(({ index, tag, body }, i) => (
-            <div className={`why-pillar d${i + 1}${visible ? ' in' : ''}`} key={tag}>
-              <span className="why-pillar-index">{index}</span>
-              <div className="why-pillar-content">
-                <span className="why-pillar-tag">{tag}</span>
-                <p className="why-pillar-body">{body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
       </div>
     </section>
   )

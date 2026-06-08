@@ -3,7 +3,6 @@ import Hero from '../components/Hero/Hero'
 import Services from '../components/Services/Services'
 import Process from '../components/Process/Process'
 import WhyChooseUs from '../components/WhyChooseUs/WhyChooseUs'
-import Stats from '../components/Stats/Stats'
 import Industries from '../components/Industries/Industries'
 import Testimonials from '../components/Testimonials/Testimonials'
 import CTA from '../components/CTA/CTA'
@@ -19,7 +18,6 @@ export default function Home() {
         <Services />
         <Process />
         <WhyChooseUs />
-        <Stats />
         <Industries />
         <Testimonials />
         <CTA />
