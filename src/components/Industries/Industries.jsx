@@ -100,12 +100,21 @@ export default function Industries() {
   const ref = useRef(null)
 
   useEffect(() => {
+    const els = ref.current?.querySelectorAll('.reveal')
+    if (!els) return
     const observer = new IntersectionObserver(
-      entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('in')),
-      { threshold: 0.06 }
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in')
+          observer.unobserve(e.target)
+        }
+      }),
+      { threshold: 0, rootMargin: '0px 0px -40px 0px' }
     )
-    ref.current?.querySelectorAll('.reveal').forEach(el => observer.observe(el))
-    return () => observer.disconnect()
+    els.forEach(el => observer.observe(el))
+    // Fallback: reveal everything after 800ms in case observer never fires
+    const t = setTimeout(() => els.forEach(el => el.classList.add('in')), 800)
+    return () => { observer.disconnect(); clearTimeout(t) }
   }, [])
 
   return (

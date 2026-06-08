@@ -1,208 +1,172 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './Testimonials.css'
 
 const testimonials = [
   {
-    name: 'Sarah Mitchell',
-    role: 'Operations Director',
-    company: 'TechBridge Solutions',
-    country: 'United Kingdom',
-    flag: '🇬🇧',
-    text: 'ExQual Compliance guided us through our ISO 9001 certification seamlessly. Their institutional knowledge and structured approach transformed what seemed daunting into a precise, manageable process. Every consultant they deployed had lived experience in our industry.',
-    cert: 'ISO 9001',
-    initials: 'SM',
+    name: 'ARUN SHARMA',
+    role: 'National GeM Support Manager - FUJIFILMS India Pvt. Ltd.',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"ExQual delivered outstanding consulting services during our QMS and GEM registration process. Their depth of expertise, attention to detail, and commitment to client success ensured a smooth, efficient outcome. We truly appreciated their guidance and dedication, and would enthusiastically recommend them to others in similar regulatory environments."',
   },
   {
-    name: 'Rajiv Menon',
-    role: 'Chief Executive Officer',
-    company: 'Optima Manufacturing',
-    country: 'India',
-    flag: '🇮🇳',
-    text: "Within four months we achieved ISO 14001 certification. ExQual's consultants were not just advisors — they were embedded partners who genuinely invested in our outcome. The rigor they brought to every milestone was exceptional.",
-    cert: 'ISO 14001',
-    initials: 'RM',
+    name: 'SATISH V K',
+    role: 'Chairman - Sharplex Filters (India) Pvt Ltd',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"They encouraged a strong culture of quality ownership across our organization, which led to meaningful employee engagement and sustainable improvements. Their ability to connect leadership vision with day-to-day actions was impressive. We saw real results and long-term value from their approach, and highly recommend their team to others."',
   },
   {
-    name: 'Fatima Al-Rashid',
-    role: 'Quality Assurance Manager',
-    company: 'HealthCore Medical',
-    country: 'UAE',
-    flag: '🇦🇪',
-    text: 'The pre-audit framework ExQual uses is extraordinary. Every gap was closed before the certification body arrived. First-pass success is their standard, not an aspiration — and it showed throughout our entire engagement.',
-    cert: 'ISO 13485',
-    initials: 'FA',
+    name: 'TEJAS PARIK',
+    role: 'Director - Upaj Investment and Finance Pvt. Ltd.',
+    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"Veridix provided insightful, professional, and results-oriented support for our sustainability challenges. Their team brought strategic thinking and practical solutions that helped us advance key initiatives. We\'re extremely pleased with their service and would recommend them to any organization seeking measurable impact in this area."',
   },
   {
-    name: 'James Whitfield',
-    role: 'Founder & Managing Director',
-    company: 'BuildRight Construction',
-    country: 'Australia',
-    flag: '🇦🇺',
-    text: 'ExQual understood our sector complexities, designed a compliance architecture that integrates with how we operate, and delivered on every commitment. Their cross-industry depth is what sets them apart.',
-    cert: 'ISO 45001',
-    initials: 'JW',
+    name: 'PARAMVEER SINGH',
+    role: 'CEO One Stop Packaging Inc',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"They consistently delivers exceptional service with a dedicated focus on long-term sustainable quality improvements. Their thorough approach and deep industry knowledge have made a tangible difference in our operations. We appreciate their professionalism and would confidently recommend them to others in need of high-impact consulting support."',
+  },
+  {
+    name: 'GREG HALLER',
+    role: 'CEO - Alorica Inc',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"Working with ExQual gave us expert cybersecurity guidance that significantly strengthened our digital defenses. They offered top-quality solutions, clear communication, and timely execution throughout the process. Their team demonstrated professionalism and technical depth, which gave us full confidence. We highly recommend their services."',
+  },
+  {
+    name: 'FATIMA AL-RASHID',
+    role: 'Quality Assurance Manager - HealthCore Medical',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"The pre-audit framework ExQual uses is extraordinary. Every gap was closed before the certification body arrived. First-pass success is their standard, not an aspiration — and it showed throughout our entire ISO 13485 engagement."',
+  },
+  {
+    name: 'RAJESH NAIR',
+    role: 'Operations Head - Tata Consultancy Services',
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"ExQual\'s systematic approach to process optimization transformed our operations significantly. Their team identified inefficiencies we had overlooked for years and provided actionable solutions. The ROI was evident within the first quarter. An exceptional consulting partner."',
+  },
+  {
+    name: 'PRIYA MENON',
+    role: 'Managing Director - GreenPath Solutions',
+    avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"Their ISO 14001 implementation guidance was thorough and practical. ExQual ensured our entire team understood the environmental management requirements deeply. We passed our certification audit with zero non-conformances. Truly world-class consulting."',
+  },
+  {
+    name: 'MICHAEL TORRES',
+    role: 'VP of Compliance - BridgePoint Financial',
+    avatar: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"We engaged ExQual for regulatory compliance support and were impressed at every step. Their consultants are knowledgeable, responsive, and genuinely invested in client success. They helped us build a compliance culture that will serve us for years to come."',
+  },
+  {
+    name: 'SUNITA KAPOOR',
+    role: 'Director Quality - Apollo MedTech',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"ExQual guided us through a complex multi-site QMS harmonization project with remarkable expertise. Their structured methodology and clear communication kept stakeholders aligned throughout. The outcome exceeded our expectations in both quality and timeline."',
+  },
+  {
+    name: 'JAMES WHITFIELD',
+    role: 'CEO - PrecisionTech Manufacturing',
+    avatar: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"The ExQual team brought clarity to our IATF 16949 journey from day one. Their hands-on involvement and deep automotive quality knowledge made the entire process seamless. Our team gained confidence and competence that will deliver value long-term."',
+  },
+  {
+    name: 'ANANYA BOSE',
+    role: 'Head of Strategy - Infosys BPM',
+    avatar: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"From gap analysis to final certification, ExQual was with us every step. Their proactive communication and in-depth industry knowledge set them apart from other consultants we have worked with. I would not hesitate to engage them again for future initiatives."',
+  },
+  {
+    name: 'DAVID OKONKWO',
+    role: 'Plant Manager - Siemens Energy Africa',
+    avatar: 'https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"ExQual delivered an ISO 45001 implementation that genuinely improved safety culture on our plant floor. Their consultants engaged workers at every level, not just management. That inclusive approach made our safety improvements both credible and lasting."',
+  },
+  {
+    name: 'LINDA ZHANG',
+    role: 'Quality Director - HorizonPharma Ltd.',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"Partnering with ExQual for our GMP compliance project was one of the best decisions we made this year. Their pharmaceutical quality expertise is unmatched. They translated complex regulatory requirements into clear, executable steps our team could own immediately."',
+  },
+  {
+    name: 'VIKRAM DESAI',
+    role: 'Founder - NovaBuild Infrastructure',
+    avatar: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=120&h=120&q=85&auto=format&fit=crop&crop=face',
+    text: '"ExQual helped us establish a robust project quality management system from scratch. Their practical templates, training sessions, and on-site support accelerated our readiness significantly. We are now bidding on larger contracts with full confidence in our QMS."',
   },
 ]
 
-const certBadges = ['ISO 9001', 'ISO 14001', 'ISO 45001', 'ISO 27001', 'ISO 13485', 'GDPR']
-
-const clients = [
-  { name: 'TechBridge Solutions', abbr: 'TBS' },
-  { name: 'Optima Manufacturing', abbr: 'OM' },
-  { name: 'HealthCore Medical', abbr: 'HCM' },
-  { name: 'BuildRight Construction', abbr: 'BRC' },
-  { name: 'Nexara Financial', abbr: 'NF' },
-  { name: 'VerdaTech Group', abbr: 'VTG' },
-]
+const VISIBLE = 4
 
 export default function Testimonials() {
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [page, setPage] = useState(0)
   const [fading, setFading] = useState(false)
-  const sectionRef = useRef(null)
+  const [visible, setVisible] = useState(false)
+  const ref = useRef(null)
+  const totalPages = Math.ceil(testimonials.length / VISIBLE)
+  const autoRef = useRef(null)
 
   useEffect(() => {
-    const timer = setInterval(() => switchTo(i => (i + 1) % testimonials.length), 7000)
-    return () => clearInterval(timer)
+    const obs = new IntersectionObserver(([e]) => e.isIntersecting && setVisible(true), { threshold: 0.08 })
+    if (ref.current) obs.observe(ref.current)
+    return () => obs.disconnect()
   }, [])
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('in')),
-      { threshold: 0.08 }
-    )
-    sectionRef.current?.querySelectorAll('.reveal').forEach(el => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
-
-  const switchTo = (valOrFn) => {
+  const go = (n) => {
     if (fading) return
     setFading(true)
-    setTimeout(() => {
-      setActiveIndex(valOrFn)
-      setFading(false)
-    }, 240)
+    setTimeout(() => { setPage(n); setFading(false) }, 220)
   }
 
-  const handleSwitch = (idx) => switchTo(idx)
+  const resetAuto = () => {
+    clearInterval(autoRef.current)
+    autoRef.current = setInterval(() => go((page + 1) % totalPages), 3500)
+  }
 
-  const ft = testimonials[activeIndex]
-  const supporting = testimonials.map((t, i) => ({ ...t, idx: i })).filter((_, i) => i !== activeIndex)
+  useEffect(() => {
+    autoRef.current = setInterval(() =>
+      setPage(p => { setFading(true); setTimeout(() => setFading(false), 220); return (p + 1) % totalPages })
+    , 3500)
+    return () => clearInterval(autoRef.current)
+  }, [totalPages])
+
+  const cards = testimonials.slice(page * VISIBLE, page * VISIBLE + VISIBLE)
 
   return (
-    <section className="testi section-pad" id="testimonials" ref={sectionRef}>
+    <section className="testi section-pad" id="testimonials" ref={ref}>
       <div className="container">
+        <h2 className={`testi-heading reveal${visible ? ' in' : ''}`}>What Our Clients Say</h2>
+        <p className={`testi-review-count reveal${visible ? ' in' : ''}`}>⭐ 16 Verified Reviews</p>
 
-        {/* Header */}
-        <div className="testi-header reveal">
-          <div className="testi-header-left">
-            <span className="eyebrow">Client Voices</span>
-            <h2 className="section-title">
-              Trusted by Enterprises<br />
-              <em className="title-em">Across the Globe.</em>
-            </h2>
-          </div>
-          <div className="testi-header-right">
-            <div className="testi-stat">
-              <span className="testi-stat-num">200+</span>
-              <span className="testi-stat-label">Certifications Delivered</span>
-            </div>
-            <div className="testi-stat-divider" />
-            <div className="testi-stat">
-              <span className="testi-stat-num">98%</span>
-              <span className="testi-stat-label">First-Pass Success Rate</span>
-            </div>
-            <div className="testi-stat-divider" />
-            <div className="testi-stat">
-              <span className="testi-stat-num">40+</span>
-              <span className="testi-stat-label">Countries Served</span>
-            </div>
-          </div>
-        </div>
+        <div className={`testi-row-wrap reveal${visible ? ' in' : ''}`}>
+          <button className="testi-arrow" onClick={() => { go((page - 1 + totalPages) % totalPages); resetAuto() }} aria-label="Previous">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <path d="M12.5 15l-5-5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
 
-        {/* Main Grid */}
-        <div className="testi-grid reveal reveal-delay-1">
-
-          {/* Featured Card */}
-          <div className={`testi-featured ${fading ? 'testi-fade-out' : 'testi-fade-in'}`}>
-            <div className="testi-featured-accent" />
-            <div className="testi-featured-top">
-              <span className="testi-cert">{ft.cert}</span>
-              <div className="testi-stars-wrap">
-                <span className="testi-stars">★★★★★</span>
-                <span className="testi-stars-label">Verified Client</span>
-              </div>
-            </div>
-            <blockquote className="testi-featured-quote">
-              <span className="testi-qmark" aria-hidden="true">&ldquo;</span>
-              {ft.text}
-            </blockquote>
-            <div className="testi-featured-footer">
-              <div className="testi-featured-author">
-                <div className="testi-avatar testi-avatar-lg">{ft.initials}</div>
-                <div className="testi-author-info">
-                  <p className="testi-author-name">{ft.name}</p>
-                  <p className="testi-author-role">{ft.role} · {ft.company}</p>
-                </div>
-              </div>
-              <div className="testi-featured-right">
-                <span className="testi-location">{ft.flag} {ft.country}</span>
-                <div className="testi-dots">
-                  {testimonials.map((_, i) => (
-                    <button
-                      key={i}
-                      className={`testi-dot ${i === activeIndex ? 'active' : ''}`}
-                      onClick={() => handleSwitch(i)}
-                      aria-label={`View testimonial ${i + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Supporting Cards */}
-          <div className="testi-supporting">
-            {supporting.map((t) => (
-              <button
-                key={t.name}
-                className="testi-support-card"
-                onClick={() => handleSwitch(t.idx)}
-              >
-                <div className="tsc-top">
-                  <div className="testi-avatar testi-avatar-sm">{t.initials}</div>
-                  <div className="tsc-meta">
-                    <span className="tsc-name">{t.name}</span>
-                    <span className="tsc-company">{t.company} · {t.flag}</span>
-                  </div>
-                  <span className="tsc-cert">{t.cert}</span>
-                </div>
-                <p className="tsc-quote">{t.text.length > 100 ? t.text.slice(0, 100) + '…' : t.text}</p>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Authority Strip */}
-        <div className="testi-strip reveal reveal-delay-2">
-          <span className="testi-strip-label">Trusted by</span>
-          <div className="testi-strip-logos">
-            {clients.map(c => (
-              <div key={c.name} className="testi-logo-pill" title={c.name}>
-                <span className="logo-abbr">{c.abbr}</span>
+          <div className={`testi-cards${fading ? ' fading' : ''}`}>
+            {cards.map((t) => (
+              <div key={t.name} className="testi-card">
+                <img src={t.avatar} alt={t.name} className="testi-avatar" loading="lazy" />
+                <p className="testi-name">{t.name}</p>
+                <p className="testi-role">{t.role}</p>
+                <div className="testi-stars">★★★★★</div>
+                <p className="testi-quote">{t.text}</p>
               </div>
             ))}
           </div>
-          <div className="testi-strip-divider" />
-          <div className="testi-cert-row">
-            {certBadges.map(b => (
-              <span key={b} className="testi-cert-chip">
-                <svg width="7" height="7" viewBox="0 0 8 8" fill="none" aria-hidden="true"><circle cx="4" cy="4" r="3" fill="currentColor" opacity=".5"/></svg>
-                {b}
-              </span>
-            ))}
-          </div>
+
+          <button className="testi-arrow" onClick={() => { go((page + 1) % totalPages); resetAuto() }} aria-label="Next">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
         </div>
 
+        <div className={`testi-dots reveal${visible ? ' in' : ''}`}>
+          {Array.from({ length: totalPages }).map((_, i) => (
+            <button key={i} className={`testi-dot${i === page ? ' active' : ''}`} onClick={() => { go(i); resetAuto() }} aria-label={`Page ${i + 1}`} />
+          ))}
+        </div>
       </div>
     </section>
   )

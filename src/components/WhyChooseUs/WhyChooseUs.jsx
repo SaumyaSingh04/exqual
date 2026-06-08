@@ -20,28 +20,28 @@ function useCounter(target, active, duration = 1800) {
 const pillars = [
   {
     index: '01',
-    tag: 'Global Authority',
+    tag: '6 Continents Coverage',
     stat: '6', suffix: ' Continents',
     body: 'Regulatory intelligence spanning six continents — institutional depth no generalist firm can replicate.',
     detail: 'Recognised across 48 regulatory jurisdictions.',
   },
   {
     index: '02',
-    tag: 'Proven Track Record',
+    tag: '98% First-Pass Certification Rate',
     stat: '98', suffix: '%',
     body: 'Pre-audit gap closure that eliminates surprises before the certification body arrives.',
     detail: 'First-pass rate across all engagements since founding.',
   },
   {
     index: '03',
-    tag: 'Enterprise Scale',
+    tag: '320+ Compliance Frameworks Delivered',
     stat: '320', suffix: '+',
     body: 'Compliance architectures integrated with governance frameworks — not bolted on as afterthoughts.',
     detail: 'Enterprises trust ExQual to architect standards-grade compliance.',
   },
   {
     index: '04',
-    tag: 'Sustained Partnership',
+    tag: '94% Client Retention Rate',
     stat: '94', suffix: '%',
     body: 'Surveillance programmes that keep accreditation a living competitive advantage.',
     detail: 'Client retention rate reflecting long-term strategic partnership.',
@@ -121,7 +121,7 @@ export default function WhyChooseUs() {
       <div className="container">
 
         <div className={`wcu-eyebrow-row${anchorIn ? ' in' : ''}`}>
-          <span className="eyebrow">Why ExQual</span>
+          <span className="eyebrow">ExQual in Numbers</span>
         </div>
 
         <div className="wcu-stage">
@@ -143,7 +143,7 @@ export default function WhyChooseUs() {
               <div className="wcu-anchor-rule" />
 
               <h2 className="wcu-anchor-headline">
-                Not Just Certified.<br /><em>Transformed.</em>
+                Not Just Compliance —<br /><em>Transformation.</em>
               </h2>
 
               <p className="wcu-anchor-desc">

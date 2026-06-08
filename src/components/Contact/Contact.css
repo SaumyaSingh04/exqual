@@ -1,6 +1,6 @@
 /* ── Section ── */
 .contact {
-  background: linear-gradient(160deg, var(--off) 0%, var(--white) 55%);
+  background: var(--off);
 }
 
 /* ── Split wrap ── */
@@ -18,10 +18,10 @@
 .contact-panel {
   background: linear-gradient(145deg, #1a0a12 0%, #2a0e1e 50%, #1c1020 100%);
   border-radius: 20px;
-  padding: 44px 36px;
+  padding: 2px 28px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 16px;
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(196, 57, 95, 0.15);
@@ -70,13 +70,13 @@
 }
 
 /* Contact details list */
-.contact-details { display: flex; flex-direction: column; gap: 14px; }
+.contact-details { display: flex; flex-direction: column; gap: 8px; }
 
 .detail-row {
   display: flex;
   align-items: flex-start;
   gap: 13px;
-  padding: 11px 13px;
+  padding: 8px 10px;
   border-radius: 10px;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.06);
@@ -118,7 +118,7 @@
 }
 
 /* Panel footer */
-.panel-footer { display: flex; flex-direction: column; gap: 14px; }
+.panel-footer { display: flex; flex-direction: column; gap: 8px; }
 
 .reply-badge {
   display: inline-flex;
@@ -149,7 +149,7 @@
 .trust-row {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 4px;
 }
 .trust-item {
   display: inline-flex;
@@ -189,9 +189,9 @@
 
 .form-header { margin-bottom: 4px; }
 .form-eyebrow {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 2.5px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--cherry);
   margin-bottom: 4px;

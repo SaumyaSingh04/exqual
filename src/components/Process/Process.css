@@ -3,8 +3,8 @@
 ═══════════════════════════════════════════════════ */
 
 .process {
-  background: #f8f8f8;
-  padding: 72px 0 64px;
+  background: var(--white);
+  padding: 96px 0;
   position: relative;
   overflow: hidden;
 }
@@ -389,7 +389,7 @@
 }
 
 @media (max-width: 560px) {
-  .process { padding: 52px 0 44px; }
+  .process { padding: 64px 0; }
   .proc-header { margin-bottom: 32px; }
   .proc-index { display: none; }
   .proc-row--top, .proc-row--bot { grid-template-columns: 1fr; }

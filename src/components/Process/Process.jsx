@@ -16,7 +16,7 @@ const stages = [
     ),
   },
   {
-    num: '02', phase: 'Design', title: 'Architecture & Build',
+    num: '02', phase: 'Design', title: 'Framework Development',
     body: 'Governance frameworks embedded into operations — not layered on top. Bespoke documentation built for your exact context.',
     kpi: '100%', kpiLabel: 'Bespoke Delivery', above: false,
     icon: (
@@ -30,7 +30,7 @@ const stages = [
     ),
   },
   {
-    num: '03', phase: 'Audit', title: 'Gap Closure & Review',
+    num: '03', phase: 'Audit', title: 'Gap Assessment & Closure',
     body: 'Rigorous pre-audit remediation across every control domain. We close every gap before your auditor opens a checklist.',
     kpi: '98%', kpiLabel: 'First-Pass Rate', above: true,
     icon: (
@@ -42,7 +42,7 @@ const stages = [
     ),
   },
   {
-    num: '04', phase: 'Certify', title: 'Authority & Continuity',
+    num: '04', phase: 'Certify', title: 'Approval & Continuous Support',
     body: 'Certification achieved. Continuous surveillance turns compliance into a durable competitive advantage.',
     kpi: '∞', kpiLabel: 'Ongoing Support', above: false,
     icon: (
@@ -80,9 +80,9 @@ export default function Process() {
             The Pathway
           </span>
           <h2 className="section-title proc-title">
-            From Engagement to <em>Authority.</em>
+            To Certification <em>Excellence.</em>
           </h2>
-          <p className="proc-sub">Four stages. One outcome — certification that holds.</p>
+          <p className="proc-sub">A structured 4-step journey designed to deliver reliable certification outcomes.</p>
 
         </header>
 

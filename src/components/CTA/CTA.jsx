@@ -2,9 +2,9 @@ import { useEffect, useRef } from 'react'
 import './CTA.css'
 
 const STATS = [
-  { value: '20+',  label: 'Years of Authority' },
-  { value: '6K+',  label: 'Certified Clients'  },
-  { value: '98%',  label: 'Pass Rate'           },
+  { value: '20+',   label: 'Years of Industry Expertise' },
+  { value: '6,000+', label: 'Certified Clients'          },
+  { value: '98%',   label: 'Success Rate'                },
 ]
 
 const BADGES = [
@@ -36,12 +36,12 @@ export default function CTA() {
           <span className="cta-eyebrow">Trusted Worldwide</span>
 
           <h2 className="cta-headline">
-            Your Certification.<br />
-            <em>Delivered with Precision.</em>
+            Ready to Begin Your<br />
+            <em>Certification Journey?</em>
           </h2>
 
           <p className="cta-sub">
-            From gap analysis to final audit — we manage every step so your team stays focused on operations.
+            Speak with our experts and get a clear roadmap for certification, timelines, and compliance strategy — all in one session.
           </p>
 
           {/* stat row */}

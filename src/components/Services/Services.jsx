@@ -42,7 +42,7 @@ const services = [
     tag: '05',
     title: 'Accreditation Support',
     badge: 'Body Accreditation',
-    desc: 'End-to-end accreditation consulting for laboratories, inspection bodies, and certification authorities seeking international recognition and operational credibility.',
+    desc: 'Comprehensive accreditation services for laboratories, inspection bodies, and certification organizations aiming for global recognition and operational excellence.',
     points: ['ISO/IEC 17025 Laboratory Accreditation', 'ISO/IEC 17020 Inspection Bodies', 'ISO/IEC 17065 Certification Bodies'],
     img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&h=700&q=85&auto=format&fit=crop&crop=center',
     cta: 'Get Accredited',
@@ -64,6 +64,7 @@ export default function Services() {
   const [sectionVisible, setSectionVisible] = useState(false)
   const sectionRef = useRef(null)
   const tabsRef = useRef(null)
+  const intervalRef = useRef(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -74,11 +75,27 @@ export default function Services() {
     return () => observer.disconnect()
   }, [])
 
+  const startAutoRotate = () => {
+    clearInterval(intervalRef.current)
+    intervalRef.current = setInterval(() => {
+      setVisible(false)
+      setTimeout(() => {
+        setActive(prev => (prev + 1) % services.length)
+        setVisible(true)
+      }, 300)
+    }, 4000)
+  }
+
+  useEffect(() => {
+    startAutoRotate()
+    return () => clearInterval(intervalRef.current)
+  }, [])
 
   const switchTab = (i) => {
     if (i === active) return
     setVisible(false)
     setTimeout(() => { setActive(i); setVisible(true) }, 300)
+    startAutoRotate()
   }
 
   const svc = services[active]
@@ -88,9 +105,9 @@ export default function Services() {
       <div className="container">
 
         <div className={`svc-header reveal${sectionVisible ? ' in' : ''}`}>
-          <span className="eyebrow">What We Offer</span>
-          <h2 className="section-title">Services Built for<br /><em>Enterprise Scale.</em></h2>
-          <p className="section-lead">Six specialised disciplines, one integrated compliance authority — delivering certifications that open global doors.</p>
+          <span className="eyebrow">Our Services</span>
+          <h2 className="section-title">Built for<br /><em>Enterprise-Grade Compliance</em></h2>
+          <p className="section-lead">Six specialized domains, one unified compliance framework — helping organizations achieve globally recognized certifications with confidence.</p>
         </div>
 
         <div className={`svc-tabs-wrap reveal${sectionVisible ? ' in' : ''}`}>
@@ -160,6 +177,32 @@ export default function Services() {
               </div>
             </div>
 
+          </div>
+        </div>
+
+        <div className={`svc-offer reveal${sectionVisible ? ' in' : ''}`}>
+          <div className="svc-offer-header">
+            <h2 className="svc-offer-heading">What We Offer</h2>
+            <p className="svc-offer-desc">We are certified compliance specialists committed to optimizing both time and cost for our clients. Our solutions are efficient, reliable, and fully aligned with international standards, delivered with complete professionalism and confidentiality.</p>
+          </div>
+          <div className="svc-offer-grid">
+            {[
+              { name: 'Management System Services', img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=85&auto=format&fit=crop' },
+              { name: 'Sustainability Services',      img: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=85&auto=format&fit=crop' },
+              { name: 'Industry Specific Services',  img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=85&auto=format&fit=crop' },
+              { name: 'Product Specific Services',   img: 'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=600&q=85&auto=format&fit=crop' },
+              { name: 'Cyber Security',              img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=85&auto=format&fit=crop' },
+            ].map(({ name, img }) => (
+              <div key={name} className="svc-offer-card">
+                <div className="svc-offer-card-img">
+                  <img src={img} alt={name} loading="lazy" />
+                </div>
+                <div className="svc-offer-card-body">
+                  <span className="svc-offer-card-name">{name}</span>
+                  <a href="#contact" className="svc-offer-read-more">Read More</a>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

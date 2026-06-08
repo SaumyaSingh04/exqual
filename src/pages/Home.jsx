@@ -3,10 +3,8 @@ import Hero from '../components/Hero/Hero'
 import Services from '../components/Services/Services'
 import Process from '../components/Process/Process'
 import WhyChooseUs from '../components/WhyChooseUs/WhyChooseUs'
-import Industries from '../components/Industries/Industries'
 import Testimonials from '../components/Testimonials/Testimonials'
 import CTA from '../components/CTA/CTA'
-import Contact from '../components/Contact/Contact'
 import Footer from '../components/Footer/Footer'
 
 export default function Home() {
@@ -18,10 +16,8 @@ export default function Home() {
         <Services />
         <Process />
         <WhyChooseUs />
-        <Industries />
         <Testimonials />
         <CTA />
-        <Contact />
       </main>
       <Footer />
     </>
