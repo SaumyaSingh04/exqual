@@ -36,7 +36,7 @@
   position: relative;
   z-index: 2;
   max-width: 700px;
-  padding: 80px 80px 100px;
+  padding: 60px 80px 80px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -48,7 +48,7 @@
   height: 4px;
   background: var(--cherry-lt);
   border-radius: 2px;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
 }
 
 /* ── HEADING ── */
@@ -58,7 +58,7 @@
   line-height: 1.08;
   color: #fff;
   letter-spacing: -1px;
-  margin-bottom: 32px;
+  margin-bottom: 22px;
 }
 
 /* ── SUBTEXT ── */
@@ -67,7 +67,7 @@
   line-height: 1.85;
   color: rgba(255, 255, 255, 0.80);
   max-width: 540px;
-  margin-bottom: 52px;
+  margin-bottom: 36px;
 }
 
 /* ── BUTTONS ── */
@@ -112,7 +112,7 @@
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .hero-inner {
-    padding: 60px 32px 72px;
+    padding: 48px 32px 56px;
     max-width: 100%;
   }
   .hero-overlay {
@@ -121,7 +121,7 @@
 }
 
 @media (max-width: 480px) {
-  .hero-inner { padding: 44px 20px 56px; }
+  .hero-inner { padding: 36px 20px 44px; }
   .hero-actions { flex-direction: column; }
   .hero-btn-outline, .hero-btn-gold { text-align: center; }
 }

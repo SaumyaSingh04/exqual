@@ -10,15 +10,12 @@ export default function Hero() {
         <div className="hero-accent" aria-hidden="true" />
 
         <h1 className="hero-heading">
-          Driving Operational<br />
-          Excellence with<br />
-          Trusted Expertise
+          Compliance Expertise.<br />
+          Delivered with Precision.
         </h1>
 
         <p className="hero-sub">
-          Unlock expert-led compliance and management solutions tailored to your business
-          needs. We focus on precision, efficiency, and measurable outcomes that elevate
-          your organization.
+          Expert-led certification and management solutions — precise, efficient, and built for measurable impact.
         </p>
 
         <div className="hero-actions">

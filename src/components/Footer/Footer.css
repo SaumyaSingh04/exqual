@@ -3,7 +3,7 @@
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 
-.footer-top { padding: 80px 0 60px; }
+.footer-top { padding: 64px 0 48px; }
 
 .footer-grid {
   display: grid;
@@ -140,6 +140,6 @@
 @media (max-width: 600px) {
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-brand { flex-direction: column; }
-  .footer-top { padding: 56px 0 48px; }
+  .footer-top { padding: 44px 0 36px; }
   .footer-bottom-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
 }

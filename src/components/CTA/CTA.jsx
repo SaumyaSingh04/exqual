@@ -36,12 +36,12 @@ export default function CTA() {
           <span className="cta-eyebrow">Trusted Worldwide</span>
 
           <h2 className="cta-headline">
-            Ready to Begin Your<br />
-            <em>Certification Journey?</em>
+            Start Your<br />
+            <em>Certification Journey.</em>
           </h2>
 
           <p className="cta-sub">
-            Speak with our experts and get a clear roadmap for certification, timelines, and compliance strategy — all in one session.
+            Get a clear roadmap — certification scope, timeline, and strategy in one session.
           </p>
 
           {/* stat row */}
@@ -67,9 +67,9 @@ export default function CTA() {
           <div className="cta-card-glow" aria-hidden="true" />
 
           <p className="cta-card-eyebrow">Start Today — No Obligation</p>
-          <h3 className="cta-card-title">Book Your Free<br />Scoping Session</h3>
+          <h3 className="cta-card-title">Free Scoping<br />Session</h3>
           <p className="cta-card-body">
-            A senior consultant will map out your certification roadmap, timeline, and investment — in 30 minutes.
+            A senior consultant maps your roadmap, timeline, and investment — in 30 minutes.
           </p>
 
           <a href="#contact" className="cta-card-btn">

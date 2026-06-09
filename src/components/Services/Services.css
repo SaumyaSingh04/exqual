@@ -341,13 +341,13 @@
 
 /* ─── What We Offer ───────────────────────────────────── */
 .svc-offer {
-  margin-top: 80px;
+  margin-top: 56px;
 }
 
 .svc-offer-header {
   text-align: center;
   max-width: 760px;
-  margin: 0 auto 48px;
+  margin: 0 auto 36px;
 }
 
 .svc-offer-heading {
@@ -357,7 +357,7 @@
   color: var(--ink);
   letter-spacing: -1.5px;
   line-height: 1.1;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .svc-offer-desc {
@@ -451,7 +451,7 @@
 }
 
 @media (max-width: 640px) {
-  .svc-offer { margin-top: 52px; }
+  .svc-offer { margin-top: 40px; }
   .svc-offer-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .svc-offer-heading { font-size: clamp(2rem, 8vw, 2.8rem); }
 }

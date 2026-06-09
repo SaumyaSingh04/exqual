@@ -2,7 +2,7 @@
 .cta-section {
   position: relative;
   background: var(--ink);
-  padding: 96px 0;
+  padding: 80px 0;
   overflow: hidden;
 }
 
@@ -246,12 +246,12 @@
   .cta-card  { max-width: 480px; }
 }
 @media (max-width: 768px) {
-  .cta-section { padding: 64px 0; }
+  .cta-section { padding: 56px 0; }
   .cta-stats   { gap: 24px; }
   .cta-stat:not(:last-child) { padding-right: 24px; }
 }
 @media (max-width: 480px) {
-  .cta-section { padding: 52px 0; }
+  .cta-section { padding: 48px 0; }
   .cta-card    { padding: 28px 22px; }
   .cta-stats   { flex-wrap: wrap; gap: 20px; }
   .cta-stat:not(:last-child) { border-right: none; }

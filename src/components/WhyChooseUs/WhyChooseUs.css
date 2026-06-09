@@ -6,7 +6,7 @@
 
 /* ── EYEBROW ROW ──────────────────────────────── */
 .wcu-eyebrow-row {
-  margin-bottom: 48px;
+  margin-bottom: 36px;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
@@ -27,7 +27,7 @@
   top: 96px;
   background: var(--ink);
   border-radius: 20px;
-  padding: 52px 44px 48px;
+  padding: 40px 40px 36px;
   overflow: hidden;
   opacity: 0;
   transform: translateY(20px);
@@ -98,14 +98,14 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   color: rgba(255,255,255,0.55);
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .wcu-anchor-rule {
   width: 40px;
   height: 1px;
   background: rgba(255,255,255,0.18);
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .wcu-anchor-headline {
@@ -190,7 +190,7 @@
 .wcu-pillar {
   display: flex;
   gap: 28px;
-  padding: 0 0 36px;
+  padding: 0 0 24px;
   opacity: 0;
   transform: translateX(22px) translateY(8px);
   transition:
@@ -314,8 +314,8 @@
 
 /* ── RESPONSIVE ────────────────────────────────── */
 @media (max-width: 1100px) {
-  .wcu-stage { grid-template-columns: 380px 1fr; gap: 36px; }
-  .wcu-anchor { padding: 44px 36px 40px; }
+  .wcu-stage { grid-template-columns: 380px 1fr; gap: 32px; }
+  .wcu-anchor { padding: 36px 32px 32px; }
 }
 
 @media (max-width: 860px) {
@@ -325,7 +325,7 @@
 }
 
 @media (max-width: 540px) {
-  .wcu-anchor { padding: 36px 28px 32px; border-radius: 16px; }
-  .wcu-pillar-body-wrap { padding: 22px 20px 20px; }
+  .wcu-anchor { padding: 32px 28px 28px; border-radius: 16px; }
+  .wcu-pillar-body-wrap { padding: 20px 18px 18px; }
   .wcu-anchor-big { letter-spacing: -2px; }
 }

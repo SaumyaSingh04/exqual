@@ -37,7 +37,7 @@ export default function Footer() {
               <span className="footer-logo-sub">Compliance</span>
             </a>
             <p className="footer-about">
-              Helping organizations achieve global standards through expert certification, auditing, and compliance solutions.
+              Expert ISO certification, auditing, and compliance consulting — trusted across 40+ countries.
             </p>
             <div className="footer-socials">
               {socials.map(({ icon: Icon, href, label }) => (

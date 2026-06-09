@@ -22,29 +22,29 @@ const pillars = [
     index: '01',
     tag: '6 Continents Coverage',
     stat: '6', suffix: ' Continents',
-    body: 'Regulatory intelligence spanning six continents — institutional depth no generalist firm can replicate.',
-    detail: 'Recognised across 48 regulatory jurisdictions.',
+    body: 'Compliance intelligence across six continents — depth no generalist firm can match.',
+    detail: 'Active across 48 regulatory jurisdictions.',
   },
   {
     index: '02',
     tag: '98% First-Pass Certification Rate',
     stat: '98', suffix: '%',
     body: 'Pre-audit gap closure that eliminates surprises before the certification body arrives.',
-    detail: 'First-pass rate across all engagements since founding.',
+    detail: 'First-pass rate across all engagements.',
   },
   {
     index: '03',
     tag: '320+ Compliance Frameworks Delivered',
     stat: '320', suffix: '+',
-    body: 'Compliance architectures integrated with governance frameworks — not bolted on as afterthoughts.',
-    detail: 'Enterprises trust ExQual to architect standards-grade compliance.',
+    body: 'Standards-grade compliance built into your operations — not bolted on.',
+    detail: 'Trusted by enterprises across every major sector.',
   },
   {
     index: '04',
     tag: '94% Client Retention Rate',
     stat: '94', suffix: '%',
-    body: 'Surveillance programmes that keep accreditation a living competitive advantage.',
-    detail: 'Client retention rate reflecting long-term strategic partnership.',
+    body: 'Long-term surveillance that keeps your certification a live competitive edge.',
+    detail: 'Reflecting deep, trust-based client relationships.',
   },
 ]
 
@@ -147,9 +147,7 @@ export default function WhyChooseUs() {
               </h2>
 
               <p className="wcu-anchor-desc">
-                Across every engagement ExQual has led — from ISO&nbsp;9001 to AS9100 to
-                IATF&nbsp;16949 — clients achieve certification on the first attempt.
-                No re-audits. No surprises.
+                Every ExQual engagement — ISO&nbsp;9001 to IATF&nbsp;16949 — achieves certification on the first attempt. No re-audits.
               </p>
 
               <div className="wcu-anchor-standards">

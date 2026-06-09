@@ -4,7 +4,7 @@ import './Process.css'
 const stages = [
   {
     num: '01', phase: 'Engage', title: 'Strategic Discovery',
-    body: 'Precision mapping of your compliance posture. Every gap identified against the target framework before a single document is written.',
+    body: 'Map your compliance gaps against the target framework before any documentation begins.',
     kpi: '2–3 wks', kpiLabel: 'Typical Sprint', above: true,
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
@@ -17,7 +17,7 @@ const stages = [
   },
   {
     num: '02', phase: 'Design', title: 'Framework Development',
-    body: 'Governance frameworks embedded into operations — not layered on top. Bespoke documentation built for your exact context.',
+    body: 'Bespoke governance frameworks and documentation built precisely for your operations.',
     kpi: '100%', kpiLabel: 'Bespoke Delivery', above: false,
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
@@ -31,7 +31,7 @@ const stages = [
   },
   {
     num: '03', phase: 'Audit', title: 'Gap Assessment & Closure',
-    body: 'Rigorous pre-audit remediation across every control domain. We close every gap before your auditor opens a checklist.',
+    body: 'Close every gap before the auditor arrives. Zero surprises, zero re-audits.',
     kpi: '98%', kpiLabel: 'First-Pass Rate', above: true,
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
@@ -43,7 +43,7 @@ const stages = [
   },
   {
     num: '04', phase: 'Certify', title: 'Approval & Continuous Support',
-    body: 'Certification achieved. Continuous surveillance turns compliance into a durable competitive advantage.',
+    body: 'Certification secured. Ongoing surveillance keeps your compliance active and competitive.',
     kpi: '∞', kpiLabel: 'Ongoing Support', above: false,
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
@@ -80,9 +80,9 @@ export default function Process() {
             The Pathway
           </span>
           <h2 className="section-title proc-title">
-            To Certification <em>Excellence.</em>
+            Four Steps to <em>Certification.</em>
           </h2>
-          <p className="proc-sub">A structured 4-step journey designed to deliver reliable certification outcomes.</p>
+          <p className="proc-sub">Structured, proven, and built for first-pass success.</p>
 
         </header>
 
@@ -147,7 +147,7 @@ export default function Process() {
         </div>
 
         <p className="proc-footnote" data-reveal style={{ transitionDelay: '0.65s' }}>
-          End-to-end advisory from first contact to post-certification continuity
+          End-to-end support — from first contact to post-certification continuity.
         </p>
 
       </div>

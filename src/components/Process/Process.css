@@ -4,7 +4,7 @@
 
 .process {
   background: var(--white);
-  padding: 96px 0;
+  padding: 80px 0;
   position: relative;
   overflow: hidden;
 }
@@ -24,7 +24,7 @@
 /* ── HEADER ──────────────────────────────────────── */
 .proc-header {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .proc-header .eyebrow { color: var(--cherry); }
 .eyebrow-line {
@@ -50,7 +50,7 @@
   display: flex;
   justify-content: center;
   max-width: 600px;
-  margin: 0 auto 44px;
+  margin: 0 auto 32px;
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: 6px;
   overflow: hidden;
@@ -354,7 +354,7 @@
 /* ── FOOTNOTE ────────────────────────────────────── */
 .proc-footnote {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 28px;
   font-family: 'Courier New', monospace;
   font-size: 0.6rem;
   letter-spacing: 2px;
@@ -389,10 +389,10 @@
 }
 
 @media (max-width: 560px) {
-  .process { padding: 64px 0; }
-  .proc-header { margin-bottom: 32px; }
+  .process { padding: 52px 0; }
+  .proc-header { margin-bottom: 24px; }
   .proc-index { display: none; }
   .proc-row--top, .proc-row--bot { grid-template-columns: 1fr; }
   .proc-panel-title { font-size: 0.95rem; }
-  .proc-footnote { margin-top: 28px; }
+  .proc-footnote { margin-top: 20px; }
 }

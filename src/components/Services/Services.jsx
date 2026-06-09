@@ -6,7 +6,7 @@ const services = [
     tag: '01',
     title: 'Management System Certification',
     badge: 'ISO Standards',
-    desc: 'Governance frameworks that elevate operational excellence to globally recognised standards — driving quality, sustainability, and workforce safety across your enterprise.',
+    desc: 'ISO 9001, ISO 14001, and ISO 45001 — quality, environment, and safety frameworks built to global standards.',
     points: ['ISO 9001 Quality Management Systems', 'ISO 14001 Environmental Management', 'ISO 45001 Occupational Health & Safety'],
     img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&h=700&q=85&auto=format&fit=crop&crop=faces,top',
     cta: 'Request Certification',
@@ -15,7 +15,7 @@ const services = [
     tag: '02',
     title: 'Industry Specific Certification',
     badge: 'Sector Expertise',
-    desc: 'Precision certification engineered for automotive, food safety, medical devices, and aerospace — meeting the most stringent regulated industry requirements worldwide.',
+    desc: 'Sector-specific certification for automotive, food safety, aerospace, and medical devices.',
     points: ['IATF 16949 Automotive Quality', 'ISO 22000 Food Safety Management', 'ISO 13485 Medical Devices'],
     img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&h=700&q=85&auto=format&fit=crop&crop=faces,top',
     cta: 'Explore Sectors',
@@ -24,7 +24,7 @@ const services = [
     tag: '03',
     title: 'Product Certification',
     badge: 'Market Access',
-    desc: 'CE marking, product testing, and regulatory approvals — ensuring your products command unrestricted access to global markets with full compliance confidence.',
+    desc: 'CE marking, product testing, and regulatory approvals for unrestricted global market access.',
     points: ['CE Marking & Regulatory Approval', 'Independent Product Testing', 'Market Access Documentation'],
     img: 'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=900&h=700&q=85&auto=format&fit=crop&crop=faces,top',
     cta: 'Start Approval Process',
@@ -33,7 +33,7 @@ const services = [
     tag: '04',
     title: 'Compliance Audits',
     badge: 'Risk Mitigation',
-    desc: 'Deep-dive internal and external audits that surface regulatory gaps before they escalate — transforming compliance vulnerabilities into structured corrective pathways.',
+    desc: 'Internal and external audits that identify gaps, reduce risk, and drive corrective action.',
     points: ['Internal Audit Programme Design', 'Regulatory Gap Analysis Reports', 'Corrective & Preventive Action Plans'],
     img: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=900&h=700&q=85&auto=format&fit=crop&crop=faces,top',
     cta: 'Schedule an Audit',
@@ -42,7 +42,7 @@ const services = [
     tag: '05',
     title: 'Accreditation Support',
     badge: 'Body Accreditation',
-    desc: 'Comprehensive accreditation services for laboratories, inspection bodies, and certification organizations aiming for global recognition and operational excellence.',
+    desc: 'Accreditation consulting for labs, inspection bodies, and certification organizations seeking global recognition.',
     points: ['ISO/IEC 17025 Laboratory Accreditation', 'ISO/IEC 17020 Inspection Bodies', 'ISO/IEC 17065 Certification Bodies'],
     img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&h=700&q=85&auto=format&fit=crop&crop=center',
     cta: 'Get Accredited',
@@ -51,7 +51,7 @@ const services = [
     tag: '06',
     title: 'Inspection Services',
     badge: 'Verification',
-    desc: 'Rigorous professional inspection across manufacturing facilities, supply chains, and mission-critical service environments — delivering verified, defensible results.',
+    desc: 'Professional inspection across facilities, supply chains, and service environments — verified results, every time.',
     points: ['Manufacturing Floor Inspection', 'Supply Chain & Vendor Audits', 'Pre-shipment Verification'],
     img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&h=700&q=85&auto=format&fit=crop&crop=faces,top',
     cta: 'Book Inspection',
@@ -106,8 +106,8 @@ export default function Services() {
 
         <div className={`svc-header reveal${sectionVisible ? ' in' : ''}`}>
           <span className="eyebrow">Our Services</span>
-          <h2 className="section-title">Built for<br /><em>Enterprise-Grade Compliance</em></h2>
-          <p className="section-lead">Six specialized domains, one unified compliance framework — helping organizations achieve globally recognized certifications with confidence.</p>
+          <h2 className="section-title">Enterprise-Grade<br /><em>Compliance Solutions</em></h2>
+          <p className="section-lead">Six specialized domains. One unified framework. Global certifications, delivered.</p>
         </div>
 
         <div className={`svc-tabs-wrap reveal${sectionVisible ? ' in' : ''}`}>
@@ -183,7 +183,7 @@ export default function Services() {
         <div className={`svc-offer reveal${sectionVisible ? ' in' : ''}`}>
           <div className="svc-offer-header">
             <h2 className="svc-offer-heading">What We Offer</h2>
-            <p className="svc-offer-desc">We are certified compliance specialists committed to optimizing both time and cost for our clients. Our solutions are efficient, reliable, and fully aligned with international standards, delivered with complete professionalism and confidentiality.</p>
+            <p className="svc-offer-desc">Certified compliance specialists delivering efficient, cost-effective solutions aligned to international standards — with full confidentiality.</p>
           </div>
           <div className="svc-offer-grid">
             {[

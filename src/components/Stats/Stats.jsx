@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import './Stats.css'
 
 const stats = [
-  { end: 20,   suffix: '+', label: 'Years of Industry Expertise',    sub: 'Industry leadership since 2004' },
-  { end: 6000, suffix: '+', label: 'Certified Clients',               sub: 'Across every major sector' },
-  { end: 98,   suffix: '%', label: 'Success Rate',                    sub: 'Unmatched in the industry' },
-  { end: 40,   suffix: '+', label: 'Countries Served',                sub: 'True global footprint' },
+  { end: 20,   suffix: '+', label: 'Years Experience',   sub: 'Since 2004' },
+  { end: 6000, suffix: '+', label: 'Certified Clients',   sub: 'Every major sector' },
+  { end: 98,   suffix: '%', label: 'Success Rate',        sub: 'First-pass, every time' },
+  { end: 40,   suffix: '+', label: 'Countries Served',    sub: 'Global footprint' },
 ]
 
 const isoBadges = [
@@ -58,9 +58,9 @@ export default function Stats() {
       <div className="container">
         <div className="stats-header reveal">
           <div className="stats-header-left">
-            <span className="stats-kicker">Global Impact</span>
+            <span className="stats-kicker">By the Numbers</span>
             <h2 className="stats-headline">
-              Trusted by organizations<br /><em>worldwide.</em>
+              Proven at scale.<br /><em>Trusted worldwide.</em>
             </h2>
           </div>
           <div className="stats-iso-badges">

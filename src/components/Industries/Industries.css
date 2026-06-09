@@ -5,7 +5,7 @@
 
 .ind-header {
   max-width: 600px;
-  margin-bottom: 48px;
+  margin-bottom: 36px;
 }
 .ind-header .section-title { color: var(--ink); }
 .ind-header .section-title em { color: var(--cherry); }
@@ -194,7 +194,7 @@
   .ind-tile--wide { grid-column: span 2; height: 170px; }
   .ind-tile--hero .ind-tile-name { font-size: 1.3rem; }
   .ind-tile-stat { display: none; }
-  .ind-header { margin-bottom: 32px; }
+  .ind-header { margin-bottom: 24px; }
 }
 
 @media (max-width: 480px) {

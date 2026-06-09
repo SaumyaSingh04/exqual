@@ -18,7 +18,7 @@
 .contact-panel {
   background: linear-gradient(145deg, #1a0a12 0%, #2a0e1e 50%, #1c1020 100%);
   border-radius: 20px;
-  padding: 2px 28px;
+  padding: 28px 28px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -316,8 +316,8 @@
 }
 
 @media (max-width: 640px) {
-  .contact-form { padding: 28px 22px; }
-  .contact-panel { padding: 32px 24px; }
+  .contact-form { padding: 24px 20px; }
+  .contact-panel { padding: 24px 20px; }
   .form-row { grid-template-columns: 1fr; }
   .form-actions { flex-wrap: wrap; }
 }
