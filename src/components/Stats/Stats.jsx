@@ -56,32 +56,39 @@ export default function Stats() {
   return (
     <section className="stats-band" id="stats" ref={ref}>
       <div className="container">
-        <div className="stats-header reveal">
-          <div className="stats-header-left">
+        <div className="stats-unified reveal">
+
+          {/* Left: branding */}
+          <div className="stats-left">
             <span className="stats-kicker">By the Numbers</span>
             <h2 className="stats-headline">
               Proven at scale.<br /><em>Trusted worldwide.</em>
             </h2>
+            <div className="stats-iso-badges">
+              {isoBadges.map(({ num, label }) => (
+                <div className="iso-badge" key={label}>
+                  <span className="iso-badge-num">{num}</span>
+                  <span className="iso-badge-label">{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="stats-iso-badges">
-            {isoBadges.map(({ num, label }) => (
-              <div className="iso-badge" key={label}>
-                <span className="iso-badge-num">{num}</span>
-                <span className="iso-badge-label">{label}</span>
+
+          {/* Divider */}
+          <div className="stats-vdivider" aria-hidden="true" />
+
+          {/* Right: stat blocks */}
+          <div className="stats-row">
+            {stats.map(({ end, suffix, label, sub }, i) => (
+              <div className={`stat-block reveal reveal-delay-${i + 1}`} key={i}>
+                <div className="sb-accent" aria-hidden="true" />
+                <span className="sb-num"><Counter end={end} suffix={suffix} /></span>
+                <span className="sb-label">{label}</span>
+                <span className="sb-sub">{sub}</span>
               </div>
             ))}
           </div>
-        </div>
 
-        <div className="stats-row">
-          {stats.map(({ end, suffix, label, sub }, i) => (
-            <div className={`stat-block reveal reveal-delay-${i + 1}`} key={i}>
-              <div className="sb-accent" aria-hidden="true" />
-              <span className="sb-num"><Counter end={end} suffix={suffix} /></span>
-              <span className="sb-label">{label}</span>
-              <span className="sb-sub">{sub}</span>
-            </div>
-          ))}
         </div>
       </div>
     </section>

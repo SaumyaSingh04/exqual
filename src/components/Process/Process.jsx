@@ -76,50 +76,23 @@ export default function Process() {
       <div className="container">
 
         <header className="proc-header" data-reveal style={{ transitionDelay: '0s' }}>
-          <span className="eyebrow">
-            The Pathway
-          </span>
-          <h2 className="section-title proc-title">
-            Four Steps to <em>Certification.</em>
-          </h2>
+          <span className="eyebrow">The Pathway</span>
+          <h2 className="section-title proc-title">Four Steps to <em>Certification.</em></h2>
           <p className="proc-sub">Structured, proven, and built for first-pass success.</p>
-
         </header>
 
-        <div className="proc-index" data-reveal style={{ transitionDelay: '0.08s' }}>
-          {stages.map((s, i) => (
-            <div className="proc-index-item" key={s.num} style={{ '--i': i }}>
-              <span className="proc-index-num">{s.num}</span>
-              <span className="proc-index-slash">/</span>
-              <span className="proc-index-phase">{s.phase}</span>
-            </div>
-          ))}
-        </div>
-
+       
         <div className="proc-timeline">
 
-          {/* Top row */}
-          <div className="proc-row proc-row--top">
-            {stages.map((s, i) => (
-              <div className="proc-col" key={s.num}
-                data-reveal data-dir="up"
-                style={{ transitionDelay: `${0.15 + i * 0.1}s` }}>
-                {s.above ? <StagePanel stage={s} pos="top" /> : <div className="proc-spacer" />}
-              </div>
-            ))}
-          </div>
-
-          {/* Spine */}
+          {/* Spine row with nodes */}
           <div className="proc-spine-row">
             <div className="proc-rail">
               <div className="proc-rail-track" />
               <div className="proc-rail-fill" data-reveal data-rail style={{ transitionDelay: '0.2s' }} />
               <div className="proc-rail-arrow" data-reveal style={{ transitionDelay: '1.25s' }} />
             </div>
-
             {stages.map((s, i) => (
               <div className="proc-node-col" key={s.num}>
-                <div className={`proc-stem ${s.above ? 'proc-stem--down' : 'proc-stem--ghost'}`} />
                 <div className="proc-node" data-reveal style={{ transitionDelay: `${0.3 + i * 0.12}s` }}>
                   <div className="proc-node-pulse" />
                   <div className="proc-node-glow" />
@@ -128,36 +101,31 @@ export default function Process() {
                     <span className="proc-node-icon">{s.icon}</span>
                   </div>
                 </div>
-                <div className={`proc-stem ${!s.above ? 'proc-stem--down' : 'proc-stem--ghost'}`} />
               </div>
             ))}
           </div>
 
-          {/* Bottom row */}
-          <div className="proc-row proc-row--bot">
+          {/* Single panel row below spine */}
+          <div className="proc-row">
             {stages.map((s, i) => (
               <div className="proc-col" key={s.num}
                 data-reveal data-dir="down"
-                style={{ transitionDelay: `${0.15 + i * 0.1}s` }}>
-                {!s.above ? <StagePanel stage={s} pos="bot" /> : <div className="proc-spacer" />}
+                style={{ transitionDelay: `${0.18 + i * 0.09}s` }}>
+                <StagePanel stage={s} />
               </div>
             ))}
           </div>
 
         </div>
 
-        <p className="proc-footnote" data-reveal style={{ transitionDelay: '0.65s' }}>
-          End-to-end support — from first contact to post-certification continuity.
-        </p>
-
       </div>
     </section>
   )
 }
 
-function StagePanel({ stage, pos }) {
+function StagePanel({ stage }) {
   return (
-    <article className={`proc-panel proc-panel--${pos}`} data-num={stage.num}>
+    <article className="proc-panel" data-num={stage.num}>
       <div className="proc-panel-glass" />
       <div className="proc-panel-top">
         <span className="proc-panel-num">{stage.num}</span>

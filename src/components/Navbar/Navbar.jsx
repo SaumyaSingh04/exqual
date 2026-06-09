@@ -122,6 +122,36 @@ export default function Navbar() {
 
   return (
     <header>
+      {/* ── Top Bar ── */}
+      <div className="topbar">
+        <div className="topbar-inner">
+          <div className="topbar-left">
+            <a href="tel:+441234567890" className="topbar-item">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                <path d="M2.5 1.5h2.2l.9 2.3-.7.7a7.1 7.1 0 0 0 3.6 3.6l.7-.7 2.3.9v2.2A1 1 0 0 1 10.5 11 9 9 0 0 1 2 2.5a1 1 0 0 1 .5-.9z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              +44 (0) 123 456 7890
+            </a>
+            <span className="topbar-sep" aria-hidden="true" />
+            <a href="mailto:info@exqual.com" className="topbar-item">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                <rect x="1" y="3" width="11" height="7.5" rx="1.5" stroke="currentColor" strokeWidth="1.2"/>
+                <path d="M1 4l5.5 3.5L12 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              info@exqual.com
+            </a>
+            <span className="topbar-sep" aria-hidden="true" />
+            <span className="topbar-item topbar-badge">
+              <span className="topbar-dot" />
+              ISO Accredited Body
+            </span>
+          </div>
+          <div className="topbar-right">
+            <span className="topbar-item topbar-hours">Mon – Fri, 9:00 – 18:00 GMT</span>
+          </div>
+        </div>
+      </div>
+
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="navbar-inner">
 

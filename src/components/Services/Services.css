@@ -6,12 +6,12 @@
 /* ─── Header ──────────────────────────────────────────── */
 .svc-header {
   max-width: 680px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
-.svc-header .eyebrow { margin-bottom: 8px; }
-.svc-header .section-title { margin-bottom: 8px; }
-.svc-header .section-lead { line-height: 1.65; font-size: 0.97rem; }
+.svc-header .eyebrow { margin-bottom: 4px; }
+.svc-header .section-title { margin-bottom: 4px; white-space: nowrap; }
+.svc-header .section-lead { line-height: 1.5; font-size: 0.92rem; white-space: nowrap; }
 
 /* ─── Tab Navigation ──────────────────────────────────── */
 .svc-tabs-wrap {

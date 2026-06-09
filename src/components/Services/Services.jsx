@@ -106,7 +106,7 @@ export default function Services() {
 
         <div className={`svc-header reveal${sectionVisible ? ' in' : ''}`}>
           <span className="eyebrow">Our Services</span>
-          <h2 className="section-title">Enterprise-Grade<br /><em>Compliance Solutions</em></h2>
+          <h2 className="section-title">Enterprise-Grade <em>Compliance Solutions</em></h2>
           <p className="section-lead">Six specialized domains. One unified framework. Global certifications, delivered.</p>
         </div>
 

@@ -2,11 +2,11 @@
    WHY CHOOSE US  —  Cinematic Split Layout
 ═══════════════════════════════════════════════ */
 
-.wcu { background: var(--off); }
+.wcu { background: var(--off); padding: 48px 0; }
 
 /* ── EYEBROW ROW ──────────────────────────────── */
 .wcu-eyebrow-row {
-  margin-bottom: 36px;
+  margin-bottom: 14px;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
@@ -16,8 +16,8 @@
 /* ── STAGE ────────────────────────────────────── */
 .wcu-stage {
   display: grid;
-  grid-template-columns: 460px 1fr;
-  gap: 48px;
+  grid-template-columns: 380px 1fr;
+  gap: 28px;
   align-items: start;
 }
 
@@ -26,8 +26,8 @@
   position: sticky;
   top: 96px;
   background: var(--ink);
-  border-radius: 20px;
-  padding: 40px 40px 36px;
+  border-radius: 16px;
+  padding: 22px 24px 20px;
   overflow: hidden;
   opacity: 0;
   transform: translateY(20px);
@@ -65,57 +65,57 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   color: rgba(255,255,255,0.38);
-  margin-bottom: 20px;
+  margin-bottom: 6px;
 }
 
 .wcu-anchor-hero {
   display: flex;
   align-items: flex-start;
   line-height: 0.88;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 
 .wcu-anchor-big {
   font-family: var(--font-display);
-  font-size: clamp(5rem, 9vw, 7.5rem);
+  font-size: clamp(3rem, 5.5vw, 4.5rem);
   font-weight: 900;
   color: var(--white);
-  letter-spacing: -4px;
+  letter-spacing: -3px;
 }
 
 .wcu-anchor-pct {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
   font-weight: 700;
   color: var(--cherry-lt);
-  margin-top: 10px;
+  margin-top: 6px;
   margin-left: 4px;
   letter-spacing: -1px;
 }
 
 .wcu-anchor-metric-label {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   color: rgba(255,255,255,0.55);
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 
 .wcu-anchor-rule {
-  width: 40px;
+  width: 32px;
   height: 1px;
   background: rgba(255,255,255,0.18);
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 .wcu-anchor-headline {
   font-family: var(--font-display);
-  font-size: clamp(1.55rem, 2.4vw, 2rem);
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
   font-weight: 800;
   color: var(--white);
   line-height: 1.18;
-  letter-spacing: -0.6px;
-  margin-bottom: 18px;
+  letter-spacing: -0.4px;
+  margin-bottom: 8px;
 }
 .wcu-anchor-headline em {
   font-style: italic;
@@ -123,10 +123,10 @@
 }
 
 .wcu-anchor-desc {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: rgba(255,255,255,0.5);
-  line-height: 1.8;
-  margin-bottom: 28px;
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
 
 .wcu-anchor-standards {
@@ -189,8 +189,8 @@
 /* ── SINGLE PILLAR ─────────────────────────────── */
 .wcu-pillar {
   display: flex;
-  gap: 28px;
-  padding: 0 0 24px;
+  gap: 20px;
+  padding: 0 0 10px;
   opacity: 0;
   transform: translateX(22px) translateY(8px);
   transition:
@@ -230,8 +230,8 @@
 .wcu-pillar-body-wrap {
   flex: 1;
   border: 1px solid var(--rule-md);
-  border-radius: 14px;
-  padding: 28px 28px 24px;
+  border-radius: 10px;
+  padding: 14px 18px 12px;
   background: var(--white);
   overflow: hidden;
   position: relative;
@@ -266,8 +266,8 @@
 .wcu-pillar-head {
   display: flex;
   align-items: baseline;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: 10px;
+  margin-bottom: 6px;
   flex-wrap: wrap;
 }
 
@@ -288,7 +288,7 @@
 
 .wcu-pillar-num {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
   font-weight: 900;
   color: var(--cherry);
   letter-spacing: -1px;
@@ -298,10 +298,10 @@
 .wcu-pillar:hover .wcu-pillar-num { color: var(--cherry-mid); }
 
 .wcu-pillar-text {
-  font-size: 0.84rem;
+  font-size: 0.78rem;
   color: var(--ink-muted);
-  line-height: 1.75;
-  margin-bottom: 10px;
+  line-height: 1.5;
+  margin-bottom: 4px;
 }
 
 .wcu-pillar-detail {
@@ -315,17 +315,17 @@
 /* ── RESPONSIVE ────────────────────────────────── */
 @media (max-width: 1100px) {
   .wcu-stage { grid-template-columns: 380px 1fr; gap: 32px; }
-  .wcu-anchor { padding: 36px 32px 32px; }
+  .wcu-anchor { padding: 24px 28px 22px; }
 }
 
 @media (max-width: 860px) {
   .wcu-stage { grid-template-columns: 1fr; gap: 40px; }
   .wcu-anchor { position: static; }
-  .wcu-anchor-big { font-size: clamp(4.5rem, 14vw, 6rem); }
+  .wcu-anchor-big { font-size: clamp(3.5rem, 12vw, 5rem); }
 }
 
 @media (max-width: 540px) {
-  .wcu-anchor { padding: 32px 28px 28px; border-radius: 16px; }
-  .wcu-pillar-body-wrap { padding: 20px 18px 18px; }
+  .wcu-anchor { padding: 22px 20px 18px; border-radius: 16px; }
+  .wcu-pillar-body-wrap { padding: 14px 16px 12px; }
   .wcu-anchor-big { letter-spacing: -2px; }
 }
