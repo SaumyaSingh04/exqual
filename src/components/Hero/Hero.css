@@ -22,13 +22,27 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(
-    105deg,
-    rgba(20, 20, 20, 0.82) 0%,
-    rgba(20, 20, 20, 0.80) 48%,
-    rgba(20, 20, 20, 0.30) 62%,
-    rgba(20, 20, 20, 0.05) 75%
-  );
+  background:
+    /* bottom fade to dark */
+    linear-gradient(
+      to top,
+      rgba(10, 10, 10, 0.75) 0%,
+      transparent 40%
+    ),
+    /* right-edge cherry/warm tint */
+    linear-gradient(
+      to left,
+      rgba(139, 20, 40, 0.30) 0%,
+      transparent 50%
+    ),
+    /* main diagonal dark */
+    linear-gradient(
+      105deg,
+      rgba(20, 20, 20, 0.88) 0%,
+      rgba(20, 20, 20, 0.82) 48%,
+      rgba(20, 20, 20, 0.25) 65%,
+      rgba(20, 20, 20, 0.05) 78%
+    );
 }
 
 /* ── CONTENT ── */
@@ -36,7 +50,7 @@
   position: relative;
   z-index: 2;
   max-width: 700px;
-  padding: 60px 80px 80px;
+  padding: 40px 80px 56px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -53,21 +67,21 @@
 
 /* ── HEADING ── */
 .hero-heading {
-  font-size: clamp(2.8rem, 5.5vw, 5rem);
-  font-weight: 800;
-  line-height: 1.08;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
   color: #fff;
-  letter-spacing: -1px;
-  margin-bottom: 22px;
+  letter-spacing: -0.3px;
+  margin-bottom: 16px;
 }
 
 /* ── SUBTEXT ── */
 .hero-sub {
   font-size: 1rem;
-  line-height: 1.85;
+  line-height: 1.7;
   color: rgba(255, 255, 255, 0.80);
   max-width: 540px;
-  margin-bottom: 36px;
+  margin-bottom: 28px;
 }
 
 /* ── BUTTONS ── */
@@ -79,13 +93,12 @@
 
 .hero-btn-outline {
   display: inline-block;
-  padding: 16px 40px;
-  border: 2px solid rgba(255, 255, 255, 0.70);
+  padding: 14px 32px;
+  border: 1.5px solid rgba(255, 255, 255, 0.70);
   color: #fff;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
   background: transparent;
   transition: background 0.22s, border-color 0.22s;
 }
@@ -96,13 +109,12 @@
 
 .hero-btn-gold {
   display: inline-block;
-  padding: 16px 40px;
+  padding: 14px 32px;
   background: var(--cherry);
   color: #fff;
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
+  letter-spacing: 0.3px;
   transition: background 0.22s;
 }
 .hero-btn-gold:hover {
@@ -112,7 +124,7 @@
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .hero-inner {
-    padding: 48px 32px 56px;
+    padding: 32px 32px 40px;
     max-width: 100%;
   }
   .hero-overlay {

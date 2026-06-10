@@ -1,29 +1,24 @@
-import { FiLinkedin, FiTwitter, FiFacebook, FiInstagram, FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaXTwitter, FaYoutube, FaWhatsapp } from 'react-icons/fa6'
+import { FiMail, FiPhone } from 'react-icons/fi'
 import './Footer.css'
 
-const services = [
-  'Management System Certification',
-  'Industry Specific Certification',
-  'Product Certification',
-  'Compliance Audits',
-  'Accreditation Support',
-  'Inspection Services',
-]
-
-const quickLinks = [
+const pages = [
   { label: 'Home', href: '#home' },
-  { label: 'About Us', href: '#why-us' },
   { label: 'Services', href: '#services' },
-  { label: 'Our Process', href: '#process' },
-  { label: 'Industries', href: '#industries' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Privacy Policy', href: '#' },
+  { label: 'Terms', href: '#' },
+  { label: 'Help', href: '#' },
+  { label: 'Contact Us', href: '#contact' },
+  { label: 'About Us', href: '#why-us' },
 ]
 
 const socials = [
-  { icon: FiLinkedin, href: '#', label: 'LinkedIn' },
-  { icon: FiTwitter, href: '#', label: 'Twitter' },
-  { icon: FiFacebook, href: '#', label: 'Facebook' },
-  { icon: FiInstagram, href: '#', label: 'Instagram' },
+  { icon: FaFacebookF, href: '#', label: 'Facebook' },
+  { icon: FaInstagram, href: '#', label: 'Instagram' },
+  { icon: FaLinkedinIn, href: '#', label: 'LinkedIn' },
+  { icon: FaXTwitter, href: '#', label: 'X' },
+  { icon: FaYoutube, href: '#', label: 'YouTube' },
+  { icon: FaWhatsapp, href: '#', label: 'WhatsApp' },
 ]
 
 export default function Footer() {
@@ -31,59 +26,50 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-top">
         <div className="container footer-grid">
+
+          {/* Brand */}
           <div className="footer-brand">
             <a href="#home" className="footer-logo">
-              <span className="footer-logo-main">Ex<span>Qual</span></span>
-              <span className="footer-logo-sub">Compliance</span>
+              <span className="footer-logo-main">Ex<span>Qual</span> Compliance</span>
             </a>
-            <p className="footer-about">
-              Expert ISO certification, auditing, and compliance consulting — trusted across 40+ countries.
+            <p className="footer-tagline">Reliable, Trusted, and Professional Services in India</p>
+            <p className="footer-eoe">
+              ExQual Compliance is an Equal Opportunity Employer. All qualified applicants will receive
+              consideration for employment without regard to race, color, age, religion, sex, sexual orientation,
+              gender identity / expression, national origin, protected veteran status, or any other characteristic
+              protected under federal, state or local law, where applicable, and those with criminal histories will
+              be considered in a manner consistent with applicable state and local laws.
             </p>
-            <div className="footer-socials">
-              {socials.map(({ icon: Icon, href, label }) => (
-                <a key={label} href={href} className="social-link" aria-label={label}>
-                  <Icon size={16} />
-                </a>
-              ))}
-            </div>
           </div>
 
+          {/* Pages */}
           <div className="footer-col">
-            <h4 className="footer-heading">Our Services</h4>
+            <h4 className="footer-heading">Pages</h4>
             <ul className="footer-list">
-              {services.map(s => (
-                <li key={s}><a href="#services" className="footer-link">{s}</a></li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="footer-col">
-            <h4 className="footer-heading">Quick Links</h4>
-            <ul className="footer-list">
-              {quickLinks.map(({ label, href }) => (
+              {pages.map(({ label, href }) => (
                 <li key={label}><a href={href} className="footer-link">{label}</a></li>
               ))}
             </ul>
           </div>
 
+          {/* Social + Contact */}
           <div className="footer-col">
-            <h4 className="footer-heading">Contact Us</h4>
+            <h4 className="footer-heading">Social Media</h4>
+            <div className="footer-socials">
+              {socials.map(({ icon: Icon, href, label }) => (
+                <a key={label} href={href} className="social-link" aria-label={label}>
+                  <Icon size={15} />
+                </a>
+              ))}
+            </div>
+
+            <h4 className="footer-heading" style={{ marginTop: '28px' }}>Contact Details</h4>
             <ul className="footer-contact-list">
-              <li>
-                <FiMapPin size={14} className="footer-contact-icon" />
-                <span>123 Business Bay, Dubai, UAE</span>
-              </li>
-              <li>
-                <FiPhone size={14} className="footer-contact-icon" />
-                <span>+971 4 123 4567</span>
-              </li>
-              <li>
-                <FiMail size={14} className="footer-contact-icon" />
-                <span>info@exqualcompliance.com</span>
-              </li>
+              <li><FiMail size={13} className="footer-contact-icon" /><a href="mailto:sales@veridix.in" className="footer-link">sales@veridix.in</a></li>
+              <li><FiPhone size={13} className="footer-contact-icon" /><a href="tel:+919616096613" className="footer-link">+91 9616096613</a></li>
             </ul>
-            <a href="#contact" className="footer-cta-btn">Get Free Quote</a>
           </div>
+
         </div>
       </div>
 

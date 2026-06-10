@@ -60,11 +60,11 @@
 .wcu-anchor-content { position: relative; }
 
 .wcu-anchor-overline {
-  font-size: 0.56rem;
-  font-weight: 700;
-  letter-spacing: 3px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.38);
+  color: rgba(255,255,255,0.45);
   margin-bottom: 6px;
 }
 
@@ -94,10 +94,10 @@
 }
 
 .wcu-anchor-metric-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  color: rgba(255,255,255,0.55);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: rgba(255,255,255,0.6);
   margin-bottom: 8px;
 }
 
@@ -111,10 +111,10 @@
 .wcu-anchor-headline {
   font-family: var(--font-display);
   font-size: clamp(1.1rem, 1.6vw, 1.35rem);
-  font-weight: 800;
+  font-weight: 700;
   color: var(--white);
-  line-height: 1.18;
-  letter-spacing: -0.4px;
+  line-height: 1.25;
+  letter-spacing: -0.2px;
   margin-bottom: 8px;
 }
 .wcu-anchor-headline em {
@@ -123,9 +123,9 @@
 }
 
 .wcu-anchor-desc {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.5;
+  font-size: 0.84rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
   margin-bottom: 10px;
 }
 
@@ -135,11 +135,11 @@
   gap: 8px;
 }
 .wcu-anchor-standards span {
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.4);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 4px;
   padding: 5px 10px;
@@ -272,17 +272,17 @@
 }
 
 .wcu-pillar-idx {
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
   color: var(--ink-faint);
 }
 
 .wcu-pillar-tag {
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.85rem;
+  font-weight: 600;
   color: var(--ink);
-  letter-spacing: 0.2px;
+  letter-spacing: 0;
   flex: 1;
 }
 
@@ -298,18 +298,17 @@
 .wcu-pillar:hover .wcu-pillar-num { color: var(--cherry-mid); }
 
 .wcu-pillar-text {
-  font-size: 0.78rem;
+  font-size: 0.84rem;
   color: var(--ink-muted);
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 4px;
 }
 
 .wcu-pillar-detail {
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.8px;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0;
   color: var(--ink-faint);
-  text-transform: uppercase;
 }
 
 /* ── RESPONSIVE ────────────────────────────────── */

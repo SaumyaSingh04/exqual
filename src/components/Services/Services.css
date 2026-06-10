@@ -67,16 +67,16 @@
 .svc-tab--active::after { transform: scaleX(1); }
 
 .svc-tab-num {
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  opacity: 0.55;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  opacity: 0.5;
 }
 
 .svc-tab-label {
-  font-size: 0.79rem;
-  font-weight: 600;
-  letter-spacing: 0.1px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 
 /* ─── Showcase Card ───────────────────────────────────── */
@@ -128,32 +128,30 @@
 }
 
 .svc-num-label {
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
   color: var(--cherry);
   opacity: 0.7;
 }
 
 .svc-badge-inline {
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
   color: var(--cherry);
   background: var(--cherry-pale);
-  padding: 4px 10px;
+  padding: 3px 10px;
   border-radius: 100px;
 }
 
 .svc-title {
   font-family: var(--font-display);
-  font-size: clamp(1.65rem, 2.2vw, 2.3rem);
-  font-weight: 800;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 700;
   color: var(--ink);
-  line-height: 1.15;
-  letter-spacing: -0.5px;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
   margin-bottom: 14px;
 }
 
@@ -198,12 +196,12 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 15px 30px;
+  padding: 14px 28px;
   background: var(--cherry);
   color: var(--white);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.3px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.1px;
   border-radius: 10px;
   width: fit-content;
   transition: background 0.2s ease, gap 0.25s var(--ease-out), box-shadow 0.2s ease;
@@ -352,11 +350,11 @@
 
 .svc-offer-heading {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
   color: var(--ink);
-  letter-spacing: -1.5px;
-  line-height: 1.1;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
   margin-bottom: 14px;
 }
 
@@ -416,10 +414,9 @@
 }
 
 .svc-offer-card-name {
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
   color: var(--ink);
   text-align: center;
   line-height: 1.5;
@@ -428,13 +425,12 @@
 .svc-offer-read-more {
   display: block;
   width: 100%;
-  padding: 12px;
+  padding: 11px;
   background: var(--cherry);
   color: var(--white);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
   text-align: center;
   border-radius: 6px;
   transition: background 0.2s ease, box-shadow 0.2s ease;
