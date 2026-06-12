@@ -115,5 +115,6 @@ img { max-width: 100%; display: block; }
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
   .section-pad { padding: 36px 0; }
-  .section-title { font-size: clamp(1.7rem, 8vw, 2.1rem); }
+  .section-title { font-size: clamp(1.6rem, 8vw, 2rem); }
+  .section-lead { font-size: 0.88rem; }
 }

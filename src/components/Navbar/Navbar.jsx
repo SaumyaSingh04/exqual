@@ -117,6 +117,7 @@ export default function Navbar() {
   const [activeAbt, setActiveAbt] = useState(0)
   const [mobileExp, setMobileExp] = useState(null)
   const closeTimer                = useRef(null)
+  const navRef                    = useRef(null)
   const scrollTo                  = useScrollTo()
 
   useEffect(() => {
@@ -124,6 +125,19 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    if (!menuOpen) return
+    const handler = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) setMenuOpen(false)
+    }
+    document.addEventListener('mousedown', handler)
+    document.addEventListener('touchstart', handler)
+    return () => {
+      document.removeEventListener('mousedown', handler)
+      document.removeEventListener('touchstart', handler)
+    }
+  }, [menuOpen])
 
   const openDrop  = (key) => { clearTimeout(closeTimer.current); setOpenMenu(key) }
   const closeDrop = ()    => { closeTimer.current = setTimeout(() => setOpenMenu(null), 150) }
@@ -134,7 +148,7 @@ export default function Navbar() {
   const curAbt  = aboutItems[activeAbt]
 
   return (
-    <header>
+    <header ref={navRef}>
       {/* ── Top Bar ── */}
       <div className="topbar">
         <div className="topbar-inner">

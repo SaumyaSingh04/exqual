@@ -133,7 +133,27 @@
 }
 
 @media (max-width: 480px) {
-  .hero-inner { padding: 36px 20px 44px; }
-  .hero-actions { flex-direction: column; }
-  .hero-btn-outline, .hero-btn-gold { text-align: center; }
+  .hero {
+    min-height: 100svh;
+    align-items: center;
+  }
+  .hero-inner {
+    padding: 28px 20px 40px;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-accent { margin: 0 auto 20px; }
+  .hero-heading { font-size: clamp(1.75rem, 8vw, 2.2rem); }
+  .hero-sub { font-size: 0.9rem; text-align: center; }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  .hero-btn-outline,
+  .hero-btn-gold {
+    text-align: center;
+    width: 100%;
+    padding: 15px 24px;
+  }
 }
