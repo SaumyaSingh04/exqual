@@ -1,9 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
+import { useScrollTo } from '../../utils/scrollTo'
 import './Navbar.css'
 
 const servicesItems = [
   {
     label: 'Management System Certification',
+    href: '/services/management-system-certification',
     tag: 'ISO Standards',
     category: 'Certification',
     tags: ['ISO 9001', 'ISO 14001', 'ISO 45001'],
@@ -13,6 +16,7 @@ const servicesItems = [
   },
   {
     label: 'Industry Specific Certification',
+    href: '/services/industry-specific-certification',
     tag: 'Sector-Tailored',
     category: 'Certification',
     tags: ['IATF 16949', 'AS9100', 'FSSC 22000'],
@@ -22,6 +26,7 @@ const servicesItems = [
   },
   {
     label: 'Product Certification',
+    href: '/services/product-certification',
     tag: 'Conformity Assessment',
     category: 'Assessment',
     tags: ['CE Marking', 'Safety', 'Performance'],
@@ -31,6 +36,7 @@ const servicesItems = [
   },
   {
     label: 'Compliance Audits',
+    href: '/services/compliance-audits',
     tag: 'Risk Management',
     category: 'Audit',
     tags: ['Gap Analysis', 'Risk', 'Regulatory'],
@@ -40,6 +46,7 @@ const servicesItems = [
   },
   {
     label: 'Accreditation Support',
+    href: '/services/accreditation-support',
     tag: 'Full Guidance',
     category: 'Advisory',
     tags: ['UKAS', 'DAkkS', 'Documentation'],
@@ -49,6 +56,7 @@ const servicesItems = [
   },
   {
     label: 'Inspection Services',
+    href: '/services/inspection-services',
     tag: 'Independent Assurance',
     category: 'Inspection',
     tags: ['On-site', 'Remote', 'Supply Chain'],
@@ -61,6 +69,7 @@ const servicesItems = [
 const aboutItems = [
   {
     label: 'Who We Are',
+    href: '/about/who-we-are',
     tag: 'Est. 2004',
     category: 'Company',
     tags: ['20+ Years', '40+ Countries', 'ISO Accredited'],
@@ -70,6 +79,7 @@ const aboutItems = [
   },
   {
     label: 'Our Process',
+    href: '/about/our-process',
     tag: '4-Stage Methodology',
     category: 'Approach',
     tags: ['Discovery', 'Architecture', 'Audit', 'Certify'],
@@ -79,6 +89,7 @@ const aboutItems = [
   },
   {
     label: 'Why ExQual',
+    href: '/about/why-exqual',
     tag: '98% First-Pass Rate',
     category: 'Differentiators',
     tags: ['6K+ Clients', '94% Retention', 'Global Reach'],
@@ -88,6 +99,7 @@ const aboutItems = [
   },
   {
     label: 'Client Testimonials',
+    href: '/about/client-testimonials',
     tag: '4.9 / 5 Rating',
     category: 'Social Proof',
     tags: ['600+ Reviews', 'Verified Clients', 'Global'],
@@ -105,6 +117,7 @@ export default function Navbar() {
   const [activeAbt, setActiveAbt] = useState(0)
   const [mobileExp, setMobileExp] = useState(null)
   const closeTimer                = useRef(null)
+  const scrollTo                  = useScrollTo()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -156,16 +169,16 @@ export default function Navbar() {
         <div className="navbar-inner">
 
           {/* Logo */}
-          <a href="#home" className="navbar-logo">
+          <Link to="/" className="navbar-logo">
             <span className="logo-mark">Ex<em>Qual</em></span>
             <span className="logo-sub">Compliance</span>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <ul className="navbar-links">
 
             {/* Home */}
-            <li><a href="#home" className="nav-link">Home</a></li>
+            <li><button className="nav-link nav-link-btn" onClick={() => scrollTo('home')}>Home</button></li>
 
             {/* Services dropdown */}
             <li className="has-mega" onMouseEnter={() => openDrop('services')} onMouseLeave={closeDrop}>
@@ -189,7 +202,8 @@ export default function Navbar() {
                     <ul className="mega-list">
                       {servicesItems.map((s, i) => (
                         <li key={s.label} style={{ '--i': i }}>
-                          <button
+                          <Link
+                            to={s.href}
                             className={`mega-item ${activeSvc === i ? 'mega-item--active' : ''}`}
                             onMouseEnter={() => setActiveSvc(i)}
                             onClick={() => { setOpenMenu(null); setMenuOpen(false) }}
@@ -207,16 +221,16 @@ export default function Navbar() {
                             <svg className="mega-item-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
                               <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
-                          </button>
+                          </Link>
                         </li>
                       ))}
                     </ul>
-                    <a href="#services" className="mega-view-all" onClick={() => setOpenMenu(null)}>
+                    <button className="mega-view-all" onClick={() => { setOpenMenu(null); scrollTo('services') }}>
                       View all services
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                         <path d="M2.5 6h7M6 2.5l3.5 3.5L6 9.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
-                    </a>
+                    </button>
                   </div>
 
                   <div className="mega-divider" />
@@ -237,12 +251,12 @@ export default function Navbar() {
                       <div className="mega-preview-tags" key={`stags-${activeSvc}`}>
                         {curSvc.tags.map(t => <span key={t} className="mega-tag-chip">{t}</span>)}
                       </div>
-                      <a href="#services" className="mega-preview-cta" onClick={() => setOpenMenu(null)}>
+                      <Link to={curSvc.href} className="mega-preview-cta" onClick={() => setOpenMenu(null)}>
                         Learn More
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                           <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -272,7 +286,8 @@ export default function Navbar() {
                     <ul className="mega-list">
                       {aboutItems.map((a, i) => (
                         <li key={a.label} style={{ '--i': i }}>
-                          <button
+                          <Link
+                            to={a.href}
                             className={`mega-item ${activeAbt === i ? 'mega-item--active' : ''}`}
                             onMouseEnter={() => setActiveAbt(i)}
                             onClick={() => { setOpenMenu(null); setMenuOpen(false) }}
@@ -290,16 +305,16 @@ export default function Navbar() {
                             <svg className="mega-item-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
                               <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
-                          </button>
+                          </Link>
                         </li>
                       ))}
                     </ul>
-                    <a href="#why-us" className="mega-view-all" onClick={() => setOpenMenu(null)}>
+                    <button className="mega-view-all" onClick={() => { setOpenMenu(null); scrollTo('why-us') }}>
                       Learn about us
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                         <path d="M2.5 6h7M6 2.5l3.5 3.5L6 9.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
-                    </a>
+                    </button>
                   </div>
 
                   <div className="mega-divider" />
@@ -320,12 +335,12 @@ export default function Navbar() {
                       <div className="mega-preview-tags" key={`atags-${activeAbt}`}>
                         {curAbt.tags.map(t => <span key={t} className="mega-tag-chip">{t}</span>)}
                       </div>
-                      <a href="#why-us" className="mega-preview-cta" onClick={() => setOpenMenu(null)}>
+                      <Link to={curAbt.href} className="mega-preview-cta" onClick={() => setOpenMenu(null)}>
                         Learn More
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                           <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -334,13 +349,13 @@ export default function Navbar() {
             </li>
 
             {/* Contact Us */}
-            <li><a href="#contact" className="nav-link">Contact Us</a></li>
+            <li><button className="nav-link nav-link-btn" onClick={() => scrollTo('contact')}>Contact Us</button></li>
 
           </ul>
 
           {/* Right CTA */}
           <div className="navbar-right">
-            <a href="#contact" className="nav-cta">Begin Engagement</a>
+            <a href="#contact" className="nav-cta" onClick={e => { e.preventDefault(); scrollTo('contact') }}>Begin Engagement</a>
             <button
               className={`hamburger ${menuOpen ? 'open' : ''}`}
               onClick={() => setMenuOpen(v => !v)}
@@ -354,7 +369,7 @@ export default function Navbar() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="mobile-menu">
-            <a href="#home" className="mobile-link" onClick={() => setMenuOpen(false)}>Home</a>
+            <button className="mobile-link" onClick={() => { scrollTo('home'); setMenuOpen(false) }}>Home</button>
 
             <div className="mobile-group">
               <button
@@ -369,9 +384,9 @@ export default function Navbar() {
               {mobileExp === 'services' && (
                 <div className="mobile-sub">
                   {servicesItems.map(s => (
-                    <a key={s.label} href="#services" className="mobile-sub-link" onClick={() => setMenuOpen(false)}>
+                    <Link key={s.label} to={s.href} className="mobile-sub-link" onClick={() => setMenuOpen(false)}>
                       {s.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -390,16 +405,16 @@ export default function Navbar() {
               {mobileExp === 'about' && (
                 <div className="mobile-sub">
                   {aboutItems.map(a => (
-                    <a key={a.label} href="#why-us" className="mobile-sub-link" onClick={() => setMenuOpen(false)}>
+                    <Link key={a.label} to={a.href} className="mobile-sub-link" onClick={() => setMenuOpen(false)}>
                       {a.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
 
-            <a href="#contact" className="mobile-link" onClick={() => setMenuOpen(false)}>Contact Us</a>
-            <a href="#contact" className="nav-cta mobile-cta" onClick={() => setMenuOpen(false)}>Begin Engagement</a>
+            <button className="mobile-link" onClick={() => { scrollTo('contact'); setMenuOpen(false) }}>Contact Us</button>
+            <button className="nav-cta mobile-cta" onClick={() => { scrollTo('contact'); setMenuOpen(false) }}>Begin Engagement</button>
           </div>
         )}
       </nav>

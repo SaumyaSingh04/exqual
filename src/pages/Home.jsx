@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar/Navbar'
 import Hero from '../components/Hero/Hero'
 import Services from '../components/Services/Services'
@@ -8,6 +10,19 @@ import CTA from '../components/CTA/CTA'
 import Footer from '../components/Footer/Footer'
 
 export default function Home() {
+  const { hash } = useLocation()
+
+  useEffect(() => {
+    if (!hash) return
+    const id = hash.replace('#', '')
+    const tryScroll = (attempts = 0) => {
+      const el = document.getElementById(id)
+      if (el) { el.scrollIntoView({ behavior: 'smooth' }); return }
+      if (attempts < 10) setTimeout(() => tryScroll(attempts + 1), 100)
+    }
+    tryScroll()
+  }, [hash])
+
   return (
     <>
       <Navbar />

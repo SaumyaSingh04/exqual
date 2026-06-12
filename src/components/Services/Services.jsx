@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import './Services.css'
 
 const services = [
   {
     tag: '01',
     title: 'Management System Certification',
+    href: '/services/management-system-certification',
     badge: 'ISO Standards',
     desc: 'ISO 9001, ISO 14001, and ISO 45001 — quality, environment, and safety frameworks built to global standards.',
     points: ['ISO 9001 Quality Management Systems', 'ISO 14001 Environmental Management', 'ISO 45001 Occupational Health & Safety'],
@@ -14,6 +16,7 @@ const services = [
   {
     tag: '02',
     title: 'Industry Specific Certification',
+    href: '/services/industry-specific-certification',
     badge: 'Sector Expertise',
     desc: 'Sector-specific certification for automotive, food safety, aerospace, and medical devices.',
     points: ['IATF 16949 Automotive Quality', 'ISO 22000 Food Safety Management', 'ISO 13485 Medical Devices'],
@@ -23,6 +26,7 @@ const services = [
   {
     tag: '03',
     title: 'Product Certification',
+    href: '/services/product-certification',
     badge: 'Market Access',
     desc: 'CE marking, product testing, and regulatory approvals for unrestricted global market access.',
     points: ['CE Marking & Regulatory Approval', 'Independent Product Testing', 'Market Access Documentation'],
@@ -32,6 +36,7 @@ const services = [
   {
     tag: '04',
     title: 'Compliance Audits',
+    href: '/services/compliance-audits',
     badge: 'Risk Mitigation',
     desc: 'Internal and external audits that identify gaps, reduce risk, and drive corrective action.',
     points: ['Internal Audit Programme Design', 'Regulatory Gap Analysis Reports', 'Corrective & Preventive Action Plans'],
@@ -41,6 +46,7 @@ const services = [
   {
     tag: '05',
     title: 'Accreditation Support',
+    href: '/services/accreditation-support',
     badge: 'Body Accreditation',
     desc: 'Accreditation consulting for labs, inspection bodies, and certification organizations seeking global recognition.',
     points: ['ISO/IEC 17025 Laboratory Accreditation', 'ISO/IEC 17020 Inspection Bodies', 'ISO/IEC 17065 Certification Bodies'],
@@ -50,6 +56,7 @@ const services = [
   {
     tag: '06',
     title: 'Inspection Services',
+    href: '/services/inspection-services',
     badge: 'Verification',
     desc: 'Professional inspection across facilities, supply chains, and service environments — verified results, every time.',
     points: ['Manufacturing Floor Inspection', 'Supply Chain & Vendor Audits', 'Pre-shipment Verification'],
@@ -157,12 +164,12 @@ export default function Services() {
                 ))}
               </ul>
 
-              <a href="#contact" className="svc-cta">
+              <Link to={svc.href} className="svc-cta">
                 {svc.cta}
                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
                   <path d="M2.5 7.5h10M9 3.5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </a>
+              </Link>
             </div>
 
             <div className="svc-visual">
@@ -187,19 +194,19 @@ export default function Services() {
           </div>
           <div className="svc-offer-grid">
             {[
-              { name: 'Management System Services', img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=85&auto=format&fit=crop' },
-              { name: 'Sustainability Services',      img: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=85&auto=format&fit=crop' },
-              { name: 'Industry Specific Services',  img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=85&auto=format&fit=crop' },
-              { name: 'Product Specific Services',   img: 'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=600&q=85&auto=format&fit=crop' },
-              { name: 'Cyber Security',              img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=85&auto=format&fit=crop' },
-            ].map(({ name, img }) => (
+              { name: 'Management System Services', img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=85&auto=format&fit=crop', href: '/services/management-system-certification' },
+              { name: 'Sustainability Services',      img: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=85&auto=format&fit=crop', href: '/services/compliance-audits' },
+              { name: 'Industry Specific Services',  img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=85&auto=format&fit=crop', href: '/services/industry-specific-certification' },
+              { name: 'Product Specific Services',   img: 'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=600&q=85&auto=format&fit=crop', href: '/services/product-certification' },
+              { name: 'Cyber Security',              img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=85&auto=format&fit=crop', href: '/services/accreditation-support' },
+            ].map(({ name, img, href }) => (
               <div key={name} className="svc-offer-card">
                 <div className="svc-offer-card-img">
                   <img src={img} alt={name} loading="lazy" />
                 </div>
                 <div className="svc-offer-card-body">
                   <span className="svc-offer-card-name">{name}</span>
-                  <a href="#contact" className="svc-offer-read-more">Read More</a>
+                  <Link to={href} className="svc-offer-read-more">Read More</Link>
                 </div>
               </div>
             ))}

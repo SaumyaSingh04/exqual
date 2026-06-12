@@ -77,6 +77,7 @@ export default function ServicePage({
   stats, overviewTitle, overviewTitleEm, overviewBody,
   benefits, sidebarFeatures, services, steps, standards, faqs,
   ctaBandTitle, ctaBandSub,
+  breadcrumbSection, breadcrumbHref,
 }) {
   const [heroVisible, setHeroVisible] = useState(false)
   const [overviewRef, overviewVisible] = useInView(0.08)
@@ -122,7 +123,7 @@ export default function ServicePage({
             <nav className={`sp-breadcrumb${heroVisible ? ' visible' : ''}`} aria-label="Breadcrumb">
               <Link to="/">Home</Link>
               <span className="sp-breadcrumb-sep">›</span>
-              <Link to="/#services">Services</Link>
+              <Link to={breadcrumbHref || '/#services'}>{breadcrumbSection || 'Services'}</Link>
               <span className="sp-breadcrumb-sep">›</span>
               <span>{title}{titleEm ? ` ${titleEm}` : ''}</span>
             </nav>
