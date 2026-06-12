@@ -349,13 +349,13 @@ export default function Navbar() {
             </li>
 
             {/* Contact Us */}
-            <li><button className="nav-link nav-link-btn" onClick={() => scrollTo('contact')}>Contact Us</button></li>
+            <li><Link to="/contact" className="nav-link">Contact Us</Link></li>
 
           </ul>
 
           {/* Right CTA */}
           <div className="navbar-right">
-            <a href="#contact" className="nav-cta" onClick={e => { e.preventDefault(); scrollTo('contact') }}>Begin Engagement</a>
+            <Link to="/contact" className="nav-cta">Begin Engagement</Link>
             <button
               className={`hamburger ${menuOpen ? 'open' : ''}`}
               onClick={() => setMenuOpen(v => !v)}
@@ -413,8 +413,8 @@ export default function Navbar() {
               )}
             </div>
 
-            <button className="mobile-link" onClick={() => { scrollTo('contact'); setMenuOpen(false) }}>Contact Us</button>
-            <button className="nav-cta mobile-cta" onClick={() => { scrollTo('contact'); setMenuOpen(false) }}>Begin Engagement</button>
+            <Link to="/contact" className="mobile-link" onClick={() => setMenuOpen(false)}>Contact Us</Link>
+            <Link to="/contact" className="nav-cta mobile-cta" onClick={() => setMenuOpen(false)}>Begin Engagement</Link>
           </div>
         )}
       </nav>

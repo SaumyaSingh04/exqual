@@ -10,6 +10,7 @@ import WhoWeAre from './pages/about/WhoWeAre.jsx'
 import OurProcess from './pages/about/OurProcess.jsx'
 import WhyExQual from './pages/about/WhyExQual.jsx'
 import ClientTestimonials from './pages/about/ClientTestimonials.jsx'
+import ContactPage from './pages/ContactPage.jsx'
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/about/our-process" element={<OurProcess />} />
         <Route path="/about/why-exqual" element={<WhyExQual />} />
         <Route path="/about/client-testimonials" element={<ClientTestimonials />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </BrowserRouter>
   )

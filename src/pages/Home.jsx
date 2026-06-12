@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar/Navbar'
 import Hero from '../components/Hero/Hero'
 import Services from '../components/Services/Services'
@@ -11,9 +11,11 @@ import Footer from '../components/Footer/Footer'
 
 export default function Home() {
   const { hash } = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (!hash) return
+    if (hash === '#contact') { navigate('/contact', { replace: true }); return }
     const id = hash.replace('#', '')
     const tryScroll = (attempts = 0) => {
       const el = document.getElementById(id)
